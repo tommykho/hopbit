@@ -134,8 +134,8 @@ arrows.
 ## Deploy
 
 - GitHub Pages: Settings → Pages → Source = **GitHub Actions** ("Deploy from a branch" runs Jekyll on raw Astro → 404).
-  suntze and hopbit switched 2026-11-07; fiverings still showed branch-mode Jekyll runs then. A failed "pages build and
-  deployment" run after a push means the source is still (or again) a branch; the Actions deploy still goes live.
+  All three set on 2026-11-07. A failed "pages build and deployment" (Jekyll) run after a push means the source was
+  set back to a branch; the Actions deploy still goes live, but fix the setting.
 - Prefer `actions/configure-pages` outputs for `BASE_PATH`/`SITE_URL`: a hardcoded `/atomichabits` broke every link when
   the repo was renamed. Every internal link goes through `u()`/`BASE`; `robots.txt` is generated, not static.
 - Vercel relay = direct upload of `api/relay.js` + `server/relay-core.js` + `package.json` (`"type": "module"`) +
