@@ -103,7 +103,7 @@ export async function encodeMp3(samples, rate, kbps = 96) {
 export async function synthesize(text, s, keys, onStatus) {
   const clean = text.replace(/\[[^\]]*\]/g, '').replace(/[*_#>`]/g, '').replace(/\s+/g, ' ').trim();
   if (!clean) throw new Error('The podcast script is empty.');
-  if (!isEnglish(clean)) throw new Error('The podcast voice speaks English only. This script contains Chinese or other non-English text: ask the coach again, or edit the script into English.');
+  if (!isEnglish(clean)) throw new Error('This version speaks English only (Japanese, Cantonese and Mandarin voices are coming). The script contains non-English text: ask again, or edit it into English.');
 
   if (s.engine === 'kokoro') {
     const { samples, rate } = await kokoro(clean, s, onStatus);

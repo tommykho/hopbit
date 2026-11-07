@@ -24,9 +24,9 @@ One ready-to-use script of 50–110 words with [placeholders]: an implementation
 ## Backfire Check
 1–3 sentences: when this would fail, the health or ethical line not to cross, and when to get professional help.
 ## Podcast Script
-A 30-second spoken script of 65–80 words for a short podcast. Warm, direct, second person. No brackets, no IDs, no lists, no stage directions. Mention "one percent" once. End with a one-line takeaway.
+A 30-second spoken script of 65–80 words for a short podcast, ALWAYS in English. Warm, direct, second person. No brackets, no IDs, no lists, no stage directions. Mention "one percent" once. End with a one-line takeaway.
 
-Language: write the whole answer in English only, even if the situation is written in another language (translate it in your head). Do not use Chinese or any other non-English script anywhere, because the podcast voice can only speak English.
+Language: answer in the language the SITUATION is written in. If the SITUATION is in English, write everything in English and never switch language. Keep the six headings exactly as written above, in English, and keep quoted phrases in English exactly as listed. The Podcast Script section is ALWAYS in English, whatever language the rest of the answer uses, because the podcast voice currently speaks English only.
 
 Keep the whole answer under 550 words.`;
 
@@ -35,13 +35,20 @@ export function buildUserPrompt(situation, retrieved) {
   const tactics = retrieved.tactics
     .map((t) => `- ${t.title} (${t.mode} a habit): ${t.situation} (idea: ${t.principle}; steps: ${t.moves.join('; ')})`)
     .join('\n');
-  return `SITUATION:\n"""\n${situation.trim().slice(0, 4000)}\n"""\n\nIDEAS you may cite (ID, name — summary):\n${ideas}\n\nRELATED TACTICS from the manual (inspiration only, do not cite as ideas):\n${tactics || '- none'}\n\n${ENGLISH_ONLY}`;
+  return `SITUATION:\n"""\n${situation.trim().slice(0, 4000)}\n"""\n\nIDEAS you may cite (ID, name — summary):\n${ideas}\n\nRELATED TACTICS from the manual (inspiration only, do not cite as ideas):\n${tactics || '- none'}\n\n${languageReminder(situation)}`;
 }
 
-/** Final line of every user message: small models weigh the last instruction most. */
-export const ENGLISH_ONLY = 'Reply in English only, using the six headings from your instructions.';
-/** Sent with the automatic retry when an answer comes back in another language. */
-export const ENGLISH_RETRY = 'IMPORTANT: your previous reply was not in English. Write the entire answer again in English only, with no Chinese or other non-English characters.';
+/** Final line of every user message (small models weigh the last instruction most). */
+export function languageReminder(situation) {
+  return isEnglish(situation)
+    ? 'Reply in English only, using the six headings from your instructions.'
+    : 'Reply in the language of the SITUATION, keep the six headings in English, and write the Podcast Script section in English.';
+}
+/** Sent with the one automatic retry, by problem type. */
+export const LANGUAGE_RETRY = {
+  answer: 'IMPORTANT: the SITUATION is in English, but your previous reply was not. Write the entire answer again in English only.',
+  podcast: 'IMPORTANT: your previous reply had no Podcast Script section in English. Answer again with the six headings exactly as written, in English, and write the Podcast Script section in English only.',
+};
 
 // CJK ideographs, kana, hangul, fullwidth forms: scripts the English podcast voice cannot read.
 const NON_ENGLISH = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af\uf900-\ufaff\uff01-\uff60]/g;
@@ -49,6 +56,17 @@ const NON_ENGLISH = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af\uf900
 export const nonEnglishCount = (s) => (String(s || '').match(NON_ENGLISH) || []).length;
 /** True when the text is English enough to show and to voice (a stray symbol or two is tolerated). */
 export const isEnglish = (s) => nonEnglishCount(s) < 4;
+
+/**
+ * Language check after an answer: 'answer' = English question answered in another language;
+ * 'podcast' = the podcast script is missing (headings translated) or not in English; null = fine.
+ */
+export function languageProblem(md, situation) {
+  if (isEnglish(situation) && nonEnglishCount(md) > 40) return 'answer';
+  const pod = parseSections(md)['Podcast Script'];
+  if (pod ? !isEnglish(pod) : !isEnglish(situation)) return 'podcast';
+  return null;
+}
 
 /** Split the streamed markdown into the six sections (best effort). */
 export function parseSections(md) {

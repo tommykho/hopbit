@@ -5,7 +5,7 @@ import { coachRank, stars } from '../../lib/ranks.js';
 import { PROVIDERS, getProvider, streamChat, listOpenRouterFree } from './providers.js';
 import { loadSettings, saveSettings, loadKeys, saveKeys, clearKeys } from './settings.js';
 import { loadCorpus, retrieve } from './retrieval.js';
-import { SYSTEM_PROMPT, ENGLISH_RETRY, buildUserPrompt, parseSections, verifyCitations, isEnglish } from './prompt.js';
+import { SYSTEM_PROMPT, LANGUAGE_RETRY, buildUserPrompt, parseSections, verifyCitations, isEnglish, languageProblem } from './prompt.js';
 import { renderMarkdown, esc } from './render.js';
 import { synthesize, scriptFromTactic, wordCount, estSeconds } from './tts.js';
 
@@ -232,17 +232,20 @@ ui.form.addEventListener('submit', async (e) => {
     const r = retrieve(db, situation);
     const user = buildUserPrompt(situation, r);
     setStatus(`Asking your ${rank.en} coach (${p.label})…`);
-    // Some models (notably Puter's small default) occasionally drift into Chinese. The podcast voice is
-    // English-only, so a non-English answer is retried once with a firmer instruction.
+    // The answer follows the user's language, but the podcast voice is English-only. Some models (notably
+    // Puter's small default) drift into Chinese or write the podcast script in another language, so one
+    // problem answer is retried with a firmer instruction.
+    let problem = null;
     for (let attempt = 0; attempt < 2; attempt++) {
+      const extra = attempt ? `\n\n${LANGUAGE_RETRY[problem]}` : '';
       lastAnswer = '';
       let pending = false;
       let finished = false;
       const paint = () => { pending = false; if (!finished) ui.answer.innerHTML = renderMarkdown(lastAnswer, db.ideaById) + '<span class="cursor"></span>'; };
       const stream = streamChat(p.id, {
         key: keys[p.id], model: modelFor(p), base: baseFor(p), signal: controller.signal, onStatus: setStatus,
-        system: attempt ? `${SYSTEM_PROMPT}\n\n${ENGLISH_RETRY}` : SYSTEM_PROMPT,
-        user: attempt ? `${user}\n\n${ENGLISH_RETRY}` : user,
+        system: SYSTEM_PROMPT + extra,
+        user: user + extra,
       });
       for await (const chunk of stream) {
         if (controller.signal.aborted) break;
@@ -250,23 +253,29 @@ ui.form.addEventListener('submit', async (e) => {
         if (!pending) { pending = true; requestAnimationFrame(paint); }
       }
       finished = true;
-      if (controller.signal.aborted || isEnglish(lastAnswer)) break;
+      if (controller.signal.aborted || !lastAnswer.trim()) break;
+      problem = languageProblem(lastAnswer, situation);
+      if (!problem) break;
       if (attempt === 0) {
-        setStatus('The coach answered in another language. Asking again in English…');
-        ui.answer.innerHTML = '<p class="hint">The coach answered in another language. Asking again in English…</p>';
+        const note = problem === 'answer' ? 'The coach answered in another language. Asking again in English…' : 'The podcast script was not in English. Asking again…';
+        setStatus(note);
+        ui.answer.innerHTML = `<p class="hint">${note}</p>`;
       }
     }
     if (!lastAnswer.trim()) throw new Error('The model returned an empty answer. Try again or pick another model.');
-    if (!controller.signal.aborted && !isEnglish(lastAnswer)) {
-      throw new Error('This coach kept answering in another language, and the podcast voice speaks English only. Try again, or choose another coach (for example a Puter model such as gpt-5-nano, or a free Gemini or Groq key) in Change coach.');
-    }
     ui.answer.innerHTML = renderMarkdown(lastAnswer, db.ideaById);
+    if (problem === 'answer' && !controller.signal.aborted) {
+      ui.answer.insertAdjacentHTML('beforeend', '<div class="error">This coach answered in another language twice. Try again, or choose another coach in Change coach.</div>');
+    }
     renderVerification(lastAnswer);
     ui.outTools.hidden = false;
     showRating(p);
     const pod = parseSections(lastAnswer)['Podcast Script'];
-    if (pod) { ui.script.value = pod.replace(/^[-*]\s*/gm, '').trim(); updateWords(); }
-    setStatus(controller.signal.aborted ? 'Stopped.' : 'Done. Scroll down to turn the plan into a podcast.');
+    const podOk = pod && isEnglish(pod);
+    if (podOk) { ui.script.value = pod.replace(/^[-*]\s*/gm, '').trim(); updateWords(); }
+    setStatus(controller.signal.aborted ? 'Stopped.'
+      : podOk ? 'Done. Scroll down to turn the plan into a podcast.'
+      : 'Done. The podcast script was not in English, so it was not copied to the studio: the voice speaks English only for now.');
   } catch (err) {
     if (err?.name === 'AbortError') { setStatus('Stopped.'); }
     else {
