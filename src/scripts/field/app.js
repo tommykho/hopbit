@@ -5,7 +5,7 @@ import { coachRank, stars } from '../../lib/ranks.js';
 import { PROVIDERS, getProvider, streamChat, listOpenRouterFree } from './providers.js';
 import { loadSettings, saveSettings, loadKeys, saveKeys, clearKeys } from './settings.js';
 import { loadCorpus, retrieve } from './retrieval.js';
-import { SYSTEM_PROMPT, buildUserPrompt, parseSections, verifyCitations } from './prompt.js';
+import { SYSTEM_PROMPT, ENGLISH_RETRY, buildUserPrompt, parseSections, verifyCitations, isEnglish } from './prompt.js';
 import { renderMarkdown, esc } from './render.js';
 import { synthesize, scriptFromTactic, wordCount, estSeconds } from './tts.js';
 
@@ -232,19 +232,34 @@ ui.form.addEventListener('submit', async (e) => {
     const r = retrieve(db, situation);
     const user = buildUserPrompt(situation, r);
     setStatus(`Asking your ${rank.en} coach (${p.label})…`);
-    let pending = false;
-    let finished = false;
-    const paint = () => { pending = false; if (!finished) ui.answer.innerHTML = renderMarkdown(lastAnswer, db.ideaById) + '<span class="cursor"></span>'; };
-    const stream = streamChat(p.id, {
-      key: keys[p.id], model: modelFor(p), base: baseFor(p), system: SYSTEM_PROMPT, user, signal: controller.signal, onStatus: setStatus,
-    });
-    for await (const chunk of stream) {
-      if (controller.signal.aborted) break;
-      lastAnswer += chunk;
-      if (!pending) { pending = true; requestAnimationFrame(paint); }
+    // Some models (notably Puter's small default) occasionally drift into Chinese. The podcast voice is
+    // English-only, so a non-English answer is retried once with a firmer instruction.
+    for (let attempt = 0; attempt < 2; attempt++) {
+      lastAnswer = '';
+      let pending = false;
+      let finished = false;
+      const paint = () => { pending = false; if (!finished) ui.answer.innerHTML = renderMarkdown(lastAnswer, db.ideaById) + '<span class="cursor"></span>'; };
+      const stream = streamChat(p.id, {
+        key: keys[p.id], model: modelFor(p), base: baseFor(p), signal: controller.signal, onStatus: setStatus,
+        system: attempt ? `${SYSTEM_PROMPT}\n\n${ENGLISH_RETRY}` : SYSTEM_PROMPT,
+        user: attempt ? `${user}\n\n${ENGLISH_RETRY}` : user,
+      });
+      for await (const chunk of stream) {
+        if (controller.signal.aborted) break;
+        lastAnswer += chunk;
+        if (!pending) { pending = true; requestAnimationFrame(paint); }
+      }
+      finished = true;
+      if (controller.signal.aborted || isEnglish(lastAnswer)) break;
+      if (attempt === 0) {
+        setStatus('The coach answered in another language. Asking again in English…');
+        ui.answer.innerHTML = '<p class="hint">The coach answered in another language. Asking again in English…</p>';
+      }
     }
-    finished = true;
     if (!lastAnswer.trim()) throw new Error('The model returned an empty answer. Try again or pick another model.');
+    if (!controller.signal.aborted && !isEnglish(lastAnswer)) {
+      throw new Error('This coach kept answering in another language, and the podcast voice speaks English only. Try again, or choose another coach (for example a Puter model such as gpt-5-nano, or a free Gemini or Groq key) in Change coach.');
+    }
     ui.answer.innerHTML = renderMarkdown(lastAnswer, db.ideaById);
     renderVerification(lastAnswer);
     ui.outTools.hidden = false;

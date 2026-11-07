@@ -26,15 +26,29 @@ One ready-to-use script of 50–110 words with [placeholders]: an implementation
 ## Podcast Script
 A 30-second spoken script of 65–80 words for a short podcast. Warm, direct, second person. No brackets, no IDs, no lists, no stage directions. Mention "one percent" once. End with a one-line takeaway.
 
-Keep the whole answer under 550 words. If the user writes in Chinese, answer in Traditional Chinese; keep quoted phrases in English exactly as listed (or cite the ID without a quote).`;
+Language: write the whole answer in English only, even if the situation is written in another language (translate it in your head). Do not use Chinese or any other non-English script anywhere, because the podcast voice can only speak English.
+
+Keep the whole answer under 550 words.`;
 
 export function buildUserPrompt(situation, retrieved) {
   const ideas = retrieved.ideas.map((i) => `[${i.id}] ${i.name} — ${i.text}`).join('\n');
   const tactics = retrieved.tactics
     .map((t) => `- ${t.title} (${t.mode} a habit): ${t.situation} (idea: ${t.principle}; steps: ${t.moves.join('; ')})`)
     .join('\n');
-  return `SITUATION:\n"""\n${situation.trim().slice(0, 4000)}\n"""\n\nIDEAS you may cite (ID, name — summary):\n${ideas}\n\nRELATED TACTICS from the manual (inspiration only, do not cite as ideas):\n${tactics || '- none'}`;
+  return `SITUATION:\n"""\n${situation.trim().slice(0, 4000)}\n"""\n\nIDEAS you may cite (ID, name — summary):\n${ideas}\n\nRELATED TACTICS from the manual (inspiration only, do not cite as ideas):\n${tactics || '- none'}\n\n${ENGLISH_ONLY}`;
 }
+
+/** Final line of every user message: small models weigh the last instruction most. */
+export const ENGLISH_ONLY = 'Reply in English only, using the six headings from your instructions.';
+/** Sent with the automatic retry when an answer comes back in another language. */
+export const ENGLISH_RETRY = 'IMPORTANT: your previous reply was not in English. Write the entire answer again in English only, with no Chinese or other non-English characters.';
+
+// CJK ideographs, kana, hangul, fullwidth forms: scripts the English podcast voice cannot read.
+const NON_ENGLISH = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af\uf900-\ufaff\uff01-\uff60]/g;
+/** Number of non-English (CJK etc.) characters in a text. */
+export const nonEnglishCount = (s) => (String(s || '').match(NON_ENGLISH) || []).length;
+/** True when the text is English enough to show and to voice (a stray symbol or two is tolerated). */
+export const isEnglish = (s) => nonEnglishCount(s) < 4;
 
 /** Split the streamed markdown into the six sections (best effort). */
 export function parseSections(md) {
