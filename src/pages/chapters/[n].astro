@@ -5,6 +5,7 @@ import Tape from '../../components/Tape.astro';
 import Num from '../../components/Num.astro';
 import TacticCard from '../../components/TacticCard.astro';
 import PenDivider from '../../components/PenDivider.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
 import { chapters, ideaAnchor } from '../../lib/content.js';
 
 export function getStaticPaths() {
@@ -18,6 +19,7 @@ const partIdx = c.part.chapters.indexOf(c.n) + 1;
 ---
 <Base title={`Chapter ${c.n}: ${c.short}`} description={`${c.essence} ${c.modern_lens}`.slice(0, 300)}>
   <div class="progress" aria-hidden="true"><i data-progress></i></div>
+  <div class="wrap chapter-bar"><span class="eyebrow">Chapter</span><ChapterNav current={c.n} label="Jump to chapter" /></div>
 
   <header class="ch-hero" data-color={c.part.color}>
     <div class="wrap ch-hero-grid">
@@ -73,14 +75,14 @@ const partIdx = c.part.chapters.indexOf(c.n) + 1;
 
   <nav class="wrap ch-nav" aria-label="Chapter navigation">
     {prev ? <a class="card" data-color={prev.part.color} href={u(`/chapters/${prev.n}/`)}><span class="eyebrow">← Chapter {prev.n}</span><h3>{prev.short}</h3></a> : <a class="card" href={u('/chapters/')}><span class="eyebrow">← All chapters</span><h3>The book, mapped</h3></a>}
-    {next ? <a class="card next" data-color={next.part.color} href={u(`/chapters/${next.n}/`)}><span class="eyebrow">Chapter {next.n} →</span><h3>{next.short}</h3></a> : <a class="card next" href={u('/coach/')}><span class="eyebrow">Finished all 20 →</span><h3>Bring your own habit to the coach</h3></a>}
+    {next ? <a class="card next" data-color={next.part.color} href={u(`/chapters/${next.n}/`)}><span class="eyebrow">Chapter {next.n} →</span><h3>{next.short}</h3></a> : <a class="card next" href={u('/challenge/')}><span class="eyebrow">Finished all 20 →</span><h3>Test yourself in the Habit Challenge</h3></a>}
   </nav>
 </Base>
 
 <style>
   .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; }
   .progress i { display: block; height: 100%; background: var(--hl); transform: scaleX(0); transform-origin: left; }
-  .ch-hero { padding: 140px 0 56px; }
+  .ch-hero { padding: 40px 0 56px; }
   .ch-hero-grid { display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 40px; align-items: center; }
   .ch-hero h1 { color: var(--law); }
   .ch-title { font-size: clamp(1.5rem, 1vw + 1.1rem, 2rem); line-height: 1.15; color: var(--ink-2); margin-top: -6px; }

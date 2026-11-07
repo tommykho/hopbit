@@ -11,7 +11,8 @@ const canonical = new URL(path, Astro.site || SITE.url).href;
 const nav = [
   { href: '/chapters/', label: 'Chapters', match: '/chapters' },
   { href: '/tactics/', label: 'Tactics', match: '/tactics' },
-  { href: '/coach/', label: 'Habit Coach', match: '/coach' },
+  { href: '/challenge/', label: 'Habit Challenge', match: '/challenge' },
+  { href: '/coach/', label: 'Ask the Coach', match: '/coach', mobileOnly: true },
   { href: '/community/', label: 'Community', match: '/community' },
   { href: '/about/', label: 'About', match: '/about' },
 ];
@@ -53,7 +54,7 @@ const nav = [
         </a>
         <ul class="nav-links" id="nav-links">
           {nav.map((n) => (
-            <li><a href={u(n.href)} aria-current={path.startsWith(u(n.match)) ? 'page' : undefined}>{n.label}</a></li>
+            <li class={n.mobileOnly ? 'mobile-only' : undefined}><a href={u(n.href)} aria-current={path.startsWith(u(n.match)) ? 'page' : undefined}>{n.label}</a></li>
           ))}
         </ul>
         <a class="btn btn--ink btn--sm" href={u('/coach/')}>Ask the Coach</a>
@@ -89,7 +90,8 @@ const nav = [
             <ul>
               <li><a href={u('/chapters/')}>The twenty chapters</a></li>
               <li><a href={u('/tactics/')}>Tactic library</a></li>
-              <li><a href={u('/coach/')}>Habit Coach (AI)</a></li>
+              <li><a href={u('/challenge/')}>Habit Challenge (skill test)</a></li>
+              <li><a href={u('/coach/')}>Ask the Coach (AI)</a></li>
               <li><a href={u('/community/')}>Community habit journals</a></li>
             </ul>
           </div>
@@ -109,6 +111,10 @@ const nav = [
         </p>
       </div>
     </footer>
+    <button class="to-top" type="button" aria-label="Back to top" title="Back to top" data-to-top hidden>
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 15V3M3.5 8.5 9 3l5.5 5.5" /></svg>
+      <span class="to-top-label" aria-hidden="true">top</span>
+    </button>
     <script src="../scripts/motion.js"></script>
   </body>
 </html>

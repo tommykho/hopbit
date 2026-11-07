@@ -4,7 +4,9 @@
 - [x] 20 chapters in 6 parts, 100 original key ideas with "Try" exercises, chapter map page
 - [x] 60 tactics (3 per chapter, build and break), filters by chapter, domain and goal, tickable steps
 - [x] Habit-journal design: light paper and night-journal themes, compounding-curve hero, animated habit tracker, GSAP + Lenis motion, reduced-motion support
-- [x] Habit Coach: 12 AI options (bring your own key, no key, on device, self-hosted), local retrieval, idea-citation verification, manual-only mode
+- [x] Habit Challenge: 30-scenario skill test (Hop 6 · Skip 12 · Jump 20), cycling bank, ranks Kit → Moon Rabbit
+- [x] Chapter dropdown + arrows on chapter pages, the tactic library (?ch=) and tactic pages; floating back-to-top
+- [x] Ask the Coach: Puter.js default, coach ranks and your own ratings, 12 AI options (bring your own key, no key, on device, self-hosted), local retrieval, idea-citation verification, manual-only mode
 - [x] 30-second podcast: Kokoro on device plus Gemini/OpenAI/ElevenLabs keys, chime intro, MP3 download
 - [x] Community habit journals preview (stored in the browser), relay with tests
 - [x] Deploy configs: Cloudflare Pages (Function relay), Vercel (relay project `hopbit-relay`), GitHub Pages workflow

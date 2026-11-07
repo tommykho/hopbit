@@ -5,6 +5,7 @@ import Tape from '../../components/Tape.astro';
 import Num from '../../components/Num.astro';
 import IdeaCard from '../../components/IdeaCard.astro';
 import TacticCard from '../../components/TacticCard.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
 import { tactics, chapterOf, relatedTactics, DOMAINS, MODES } from '../../lib/content.js';
 
 export function getStaticPaths() {
@@ -12,16 +13,23 @@ export function getStaticPaths() {
 }
 const { t } = Astro.props;
 const ch = chapterOf(t.chapter);
+const pos = tactics.findIndex((x) => x.slug === t.slug);
+const prevT = tactics[pos - 1];
+const nextT = tactics[pos + 1];
+const inChapter = tactics.filter((x) => x.chapter === t.chapter);
+const chPos = inChapter.findIndex((x) => x.slug === t.slug) + 1;
 const related = relatedTactics(t, 3);
 const effortLabel = { minutes: 'Minutes to set up', hours: 'A few hours', days: 'Over several days' }[t.effort];
 const diffLabel = ['', 'Easy', 'Moderate', 'Advanced'][t.difficulty];
 ---
 <Base title={t.title} description={`${t.situation} ${t.principle}. Chapter ${ch.n}: ${ch.short}.`}>
+  <div class="wrap chapter-bar"><span class="eyebrow">Chapter</span><ChapterNav current={t.chapter} mode="tactics" withAll label="Tactics by chapter" /></div>
+
   <article class="tactic" data-color={ch.part.color}>
     <header class="t-hero">
       <div class="wrap t-hero-grid">
         <div>
-          <nav class="crumbs" aria-label="Breadcrumb"><a href={u('/tactics/')}>Tactics</a> / <a href={u(`/chapters/${ch.n}/`)}>Chapter {ch.n} · {ch.short}</a></nav>
+          <nav class="crumbs" aria-label="Breadcrumb"><a href={u('/tactics/')}>Tactics</a> / <a href={u(`/tactics/?ch=${ch.n}`)}>Chapter {ch.n} · {ch.short}</a> / <span>{chPos} of {inChapter.length}</span></nav>
           <h1 data-reveal>{t.title}</h1>
           <p class="t-situation" data-reveal>{t.situation}</p>
           <div class="card-meta" data-reveal>
@@ -105,6 +113,13 @@ const diffLabel = ['', 'Easy', 'Moderate', 'Advanced'][t.difficulty];
     </section>
   </article>
 
+  <nav class="wrap t-pager" aria-label="Tactic navigation">
+    <div class="t-prevnext">
+      {prevT ? <a class="card" data-color={chapterOf(prevT.chapter).part.color} href={u(`/tactics/${prevT.slug}/`)}><span class="eyebrow">← Previous tactic · Ch. {prevT.chapter}</span><h3>{prevT.title}</h3></a> : <span></span>}
+      {nextT ? <a class="card next" data-color={chapterOf(nextT.chapter).part.color} href={u(`/tactics/${nextT.slug}/`)}><span class="eyebrow">Next tactic · Ch. {nextT.chapter} →</span><h3>{nextT.title}</h3></a> : <a class="card next" href={u('/challenge/')}><span class="eyebrow">Last tactic →</span><h3>Test yourself in the Habit Challenge</h3></a>}
+    </div>
+  </nav>
+
   <section class="section wrap" aria-labelledby="related-title">
     <p class="eyebrow">Related</p>
     <h2 id="related-title">Next small step</h2>
@@ -127,10 +142,16 @@ const diffLabel = ['', 'Easy', 'Moderate', 'Advanced'][t.difficulty];
 </script>
 
 <style>
-  .t-hero { padding: 140px 0 36px; }
+  .t-hero { padding: 40px 0 36px; }
   .t-hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
   .crumbs { font: 500 0.8rem var(--f-ui); color: var(--ink-3); margin-bottom: 18px; }
   .crumbs a { text-decoration: none; color: var(--ink-2); }
+  .crumbs span { color: var(--ink-3); }
+  .t-pager { padding-top: 40px; }
+  .t-prevnext { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .t-prevnext .next { text-align: right; }
+  .t-prevnext .next .eyebrow { justify-content: flex-end; }
+  @media (max-width: 700px) { .t-prevnext { grid-template-columns: 1fr; } }
   .t-situation { font-size: clamp(1.15rem, 0.9vw + 1rem, 1.45rem); color: var(--law); max-width: 52ch; }
   .t-side { display: grid; justify-items: center; gap: 14px; }
   .t-side :global(.num) { --size: 120px; }

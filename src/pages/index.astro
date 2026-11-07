@@ -55,7 +55,7 @@ const grid = habits.map(() => {
           Twenty chapters of habit ideas turned into small, practical systems for work, business and home.
         </p>
         <div class="hero-cta" data-hero-in>
-          <a class="btn btn--ink" href={u('/coach/')}>Ask the Habit Coach</a>
+          <a class="btn btn--ink" href={u('/coach/')}>Ask the Coach</a>
           <a class="btn" href={u('/chapters/')}>Read the 20 chapters</a>
         </div>
       </div>
@@ -194,11 +194,35 @@ const grid = habits.map(() => {
     </div>
   </section>
 
-  <!-- ===================== COACH TEASER ===================== -->
+  <!-- ===================== HABIT CHALLENGE (QUIZ) TEASER ===================== -->
+  <section class="section quiz-teaser">
+    <div class="wrap quiz-grid">
+      <div class="quiz-mock ruled" data-reveal="scale" aria-hidden="true">
+        <Tape color="green" class="mock-tape">Scenario 7 / 12 · Chapter 13</Tape>
+        <h3>Nine Days of Avoidance</h3>
+        <p class="qm-text">A quarterly report has sat on your list for nine days. Each morning you feel overwhelmed and pick something smaller…</p>
+        <div class="qm-opt qm-hit"><b>A</b> Open the file and type the first heading before email</div>
+        <div class="qm-opt qm-wrong"><b>B</b> Clear every other task first, then focus</div>
+        <div class="qm-opt qm-hit"><b>C</b> Leave tomorrow's next step at the top of the doc</div>
+        <div class="qm-score"><strong>67%</strong><span>2 correct · 1 missed (unhelpful pick)</span></div>
+      </div>
+      <div>
+        <p class="eyebrow" data-reveal>Habit Challenge · skill test</p>
+        <h2 data-reveal>Hop, skip, jump. <span class="mark">Earn your rank.</span></h2>
+        <p class="lede" data-reveal>
+          Choose Hop (6 scenarios), Skip (12) or Jump (20). Read an everyday habit dilemma, pick every move that would help, and see what you missed.
+          Score high enough to rise from <strong>Kit</strong> to <strong>Moon Rabbit</strong>.
+        </p>
+        <a class="btn btn--ink" href={u('/challenge/')} data-reveal>Take the Habit Challenge</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ASK THE COACH TEASER ===================== -->
   <section class="section coach-teaser">
     <div class="wrap coach-grid">
       <div>
-        <p class="eyebrow" data-reveal>Habit Coach · AI</p>
+        <p class="eyebrow" data-reveal>Ask the Coach · AI</p>
         <h2 data-reveal>Describe the habit. <span class="scribble">Get a system.<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M2 8 C 50 2, 120 12, 198 4" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" /></svg></span></h2>
         <p class="lede" data-reveal>
           Tell the coach what you want to start or stop. It maps your habit loop, cites the ideas it relies on (checked against this manual), and gives you a four-law system, a script to use and a backfire check.
@@ -209,7 +233,7 @@ const grid = habits.map(() => {
           <li>Your key stays in your browser. Nothing is stored on our servers.</li>
           <li>Voice generated on your device. No sign-up needed.</li>
         </ul>
-        <a class="btn btn--ink" href={u('/coach/')} data-reveal>Open the Habit Coach</a>
+        <a class="btn btn--ink" href={u('/coach/')} data-reveal>Ask the Coach</a>
       </div>
       <div class="coach-mock ruled" data-reveal="scale" aria-hidden="true">
         <Tape color="blue" class="mock-tape">habit coach</Tape>
@@ -396,6 +420,23 @@ const grid = habits.map(() => {
   .mock-wave i:nth-child(odd) { animation-delay: -0.4s; } .mock-wave i:nth-child(3n) { animation-delay: -0.8s; }
   @keyframes wave { 0%, 100% { height: 6px; } 50% { height: 30px; } }
   @media (max-width: 860px) { .coach-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- quiz teaser ---------- */
+  .quiz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+  @media (max-width: 860px) { .quiz-grid { grid-template-columns: 1fr; } }
+  .quiz-mock { position: relative; padding: 32px 22px 22px 54px; border-radius: 6px; border: 1px solid var(--line); box-shadow: var(--shadow-lift); transform: rotate(-1deg); }
+  .quiz-mock :global(.mock-tape) { position: absolute; top: -11px; left: 28px; }
+  .quiz-mock h3 { margin: 4px 0 8px; }
+  .qm-text { color: var(--ink-2); font-size: 0.98rem; }
+  .qm-opt { display: flex; gap: 10px; align-items: center; padding: 9px 12px; margin-top: 8px; border-radius: 8px; border: 1.5px solid var(--line-2); background: var(--paper-2); font: 400 0.88rem/1.4 var(--f-ui); }
+  .qm-opt b { width: 24px; height: 24px; flex: none; display: grid; place-items: center; border-radius: 6px; font-size: 0.75rem; color: var(--paper-2); }
+  .qm-hit { border-color: var(--green); }
+  .qm-hit b { background: var(--green); }
+  .qm-wrong { border-color: var(--red); }
+  .qm-wrong b { background: var(--red); }
+  .qm-score { display: flex; align-items: baseline; gap: 12px; margin-top: 16px; }
+  .qm-score strong { font: 700 2.6rem/1 var(--f-hand); color: var(--red); }
+  .qm-score span { font: 500 0.8rem var(--f-ui); color: var(--ink-3); }
 
   .community-teaser { background: radial-gradient(ellipse 60% 50% at 50% 50%, var(--hl-soft), transparent 70%); }
 </style>

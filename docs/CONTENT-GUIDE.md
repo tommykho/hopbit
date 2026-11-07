@@ -64,3 +64,43 @@ Tone
 - Health: no crash diets, extreme fasting or overtraining; point to a doctor for dependence, eating, mood or safety issues.
 
 Domain mix: ≥ 40% `work`/`career`/`business`, ≥ 25% `health`/`family`/`self`. Current: 33 / 27 of 60.
+
+---
+
+## 4. Habit Challenge questions — `data/challenge/setN.json` (array)
+
+The Habit Challenge has three runs: Hop (6), Skip (12) and Jump (20), drawn from a bank of **30 scenarios**
+(`set1.json`). Questions cycle: unseen ones come first. Each question is an everyday habit dilemma with
+**5 candidate moves**; the player selects every move that would help. Score per question =
+correct ÷ (correct + missed), where *missed* = helpful moves left out + unhelpful moves picked.
+
+```json
+{
+  "id": "c-nine-days-of-avoidance",
+  "chapter": 13,
+  "domain": "work",
+  "difficulty": 2,
+  "title": "Nine Days of Avoidance",
+  "scenario": "40–130 words, second person, present tense, concrete details (who, what, stakes).",
+  "options": [
+    { "text": "Imperative move, at most ~22 words.", "correct": true, "why": "At most ~35 words: why this helps or backfires." },
+    { "text": "…", "correct": false, "why": "…" }
+  ],
+  "ideas": ["13.1", "13.2"],
+  "tactic": "just-open-the-file",
+  "lesson": "One-line takeaway, at most 140 characters."
+}
+```
+
+Rules
+- `id`: `c-` + kebab-case, unique across all sets, at most 40 characters.
+- `chapter` 1–20, `domain` one of `work`, `career`, `business`, `health`, `family`, `self`, `difficulty` 1–3.
+- `title`: at most 6 words. `options`: exactly 5; 1, 2 or 3 correct (aim for about 20% / 50% / 30%). Never "all of the above".
+- Wrong moves must be **plausible human reactions** that break a habit principle: relying on willpower, going too big,
+  all-or-nothing after a miss, waiting for motivation or a fresh start, shaming or punishing, adding rules instead of
+  removing friction, tracking the wrong number. Do not make them silly.
+- Correct moves must be safe, kind and practical: obvious cues, attractive pairings, less friction, immediate rewards,
+  identity votes, tiny starts, tracking, review.
+- `why`: explain the principle in plain words; no quotes from any book.
+- `ideas`: 1–2 idea IDs; at least one from the question's `chapter`. `tactic`: optional slug of an existing tactic.
+- Mix domains: at least 40% work/career/business, at least 25% health/family/self.

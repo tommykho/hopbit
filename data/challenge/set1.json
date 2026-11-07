@@ -1,0 +1,1232 @@
+[
+  {
+    "id": "c-the-big-quarterly-reset",
+    "chapter": 1,
+    "domain": "business",
+    "difficulty": 2,
+    "title": "The Big Quarterly Reset",
+    "scenario": "You run a 12-person agency. Every quarter you launch a big productivity initiative: new tools, a new meeting rhythm, a 20-page process document. By week four the team is back to old routines, and margins have been flat for a year. Your co-founder wants another overhaul in January, with an offsite and a new project platform. You have one hour with the team on Monday to set the direction.",
+    "options": [
+      {
+        "text": "Pick one small process to improve each week and track a single number for it, such as days to send invoices.",
+        "correct": true,
+        "why": "Small, repeated improvements compound. A weekly 1% fix to the system beats rare overhauls that fade by week four."
+      },
+      {
+        "text": "Run the January offsite and launch the new platform with a bigger kickoff, so this time it sticks.",
+        "correct": false,
+        "why": "Another overhaul repeats the pattern that already failed. Big launches run on enthusiasm, and the daily system stays the same."
+      },
+      {
+        "text": "Ask the team which daily routine wastes the most time, and start there instead of with a goal.",
+        "correct": true,
+        "why": "Results follow processes. Starting from the routine people actually run each day targets the system that produces flat margins."
+      },
+      {
+        "text": "Set an ambitious 30% margin target and tie bonuses to hitting it by the end of the quarter.",
+        "correct": false,
+        "why": "A target without a system changes nothing about daily work, and pressure tends to produce gaming rather than better processes."
+      },
+      {
+        "text": "Wait for a quieter month, when everyone has time to commit to a proper transformation.",
+        "correct": false,
+        "why": "Waiting for the perfect moment is motion, not action. A busy agency rarely has a quiet month, and small fixes can start this week."
+      }
+    ],
+    "ideas": [
+      "1.4",
+      "1.1"
+    ],
+    "tactic": "one-percent-pipeline",
+    "lesson": "Fix the system one small step at a time. Big resets fade; small weekly improvements compound."
+  },
+  {
+    "id": "c-six-weeks-still-lost",
+    "chapter": 1,
+    "domain": "career",
+    "difficulty": 1,
+    "title": "Six Weeks, Still Lost",
+    "scenario": "For six weeks you have practised data analysis for twenty minutes after work, hoping to move into an analyst role. You still need three browser tabs to write a simple query, and a colleague seems to just know it all. You are starting to think you are not a numbers person and want to drop it for something you already do well. An internal analyst vacancy opens in four months.",
+    "options": [
+      {
+        "text": "Keep the daily practice and swap one tutorial a week for a real task from your team's work.",
+        "correct": true,
+        "why": "Early effort often hides below the surface. Keeping the habit while making practice more real helps the stored progress show."
+      },
+      {
+        "text": "Stop now: six weeks without feeling confident proves it is not for you.",
+        "correct": false,
+        "why": "Quitting in the flat stretch throws away hidden progress just before it shows. Judge the trend and the method, not the feeling."
+      },
+      {
+        "text": "Redo a week-one exercise and time yourself, so you can see how far you have come.",
+        "correct": true,
+        "why": "Concrete comparisons reveal the slope of improvement that feelings hide, which keeps you going through the plateau."
+      },
+      {
+        "text": "Jump to two hours of practice every night until you feel like an expert.",
+        "correct": false,
+        "why": "A sudden jump in effort is hard to sustain after work and often ends the habit. Steady repetition beats intensity."
+      },
+      {
+        "text": "Take a month off to rest, then restart with a stricter plan.",
+        "correct": false,
+        "why": "A long break weakens both the habit and the identity you are building. Momentum is easier to keep than to rebuild."
+      }
+    ],
+    "ideas": [
+      "1.3",
+      "11.4"
+    ],
+    "tactic": "push-through-the-plateau",
+    "lesson": "Progress hides before it shows. Keep practising, check the trend and make practice more real rather than quit."
+  },
+  {
+    "id": "c-just-not-a-runner",
+    "chapter": 2,
+    "domain": "health",
+    "difficulty": 1,
+    "title": "Just Not a Runner",
+    "scenario": "Your doctor suggested regular exercise after a check-up. You have always told people you are not sporty, and your last two gym memberships lapsed within a month. A colleague invites you to a beginner jogging group on Wednesday evenings. You say yes, then catch yourself rehearsing excuses on Wednesday morning. You want this time to be different, but you do not believe you are the type of person who exercises.",
+    "options": [
+      {
+        "text": "Go on Wednesday with a modest aim, twenty minutes of walk-jog, and count it as one vote for being active.",
+        "correct": true,
+        "why": "Identity changes through small votes. Showing up at an easy level gives evidence for the new self-image without a big transformation."
+      },
+      {
+        "text": "Skip it and buy a new gym membership so you can train alone when you feel ready.",
+        "correct": false,
+        "why": "Waiting until you feel ready repeats the old pattern, and paying again does not change the identity that let the last memberships lapse."
+      },
+      {
+        "text": "Replace the line 'I am not sporty' with 'I am someone who moves on Wednesdays' and say it before you leave.",
+        "correct": true,
+        "why": "Labels steer behaviour. A new, believable identity statement supports the habit instead of quietly giving you permission to skip."
+      },
+      {
+        "text": "Promise yourself five runs a week from tomorrow to make up for lost years.",
+        "correct": false,
+        "why": "An all-at-once plan sets up failure, and the first missed run confirms the old label. Small, winnable votes build the identity."
+      },
+      {
+        "text": "Tell everyone you hate running so nobody expects much if you quit.",
+        "correct": false,
+        "why": "Lowering expectations protects the old identity and makes quitting easy. Act as the new person instead of defending the old one."
+      }
+    ],
+    "ideas": [
+      "2.3",
+      "2.5"
+    ],
+    "tactic": "vote-with-one-workout",
+    "lesson": "Each small session is a vote for who you are becoming. Change the label, then collect the evidence."
+  },
+  {
+    "id": "c-the-notes-nobody-sends",
+    "chapter": 3,
+    "domain": "work",
+    "difficulty": 2,
+    "title": "The Notes Nobody Sends",
+    "scenario": "Months ago your team agreed to send a short summary after every client call. Almost nobody does. When you ask why, people say they forget, the template is buried in a shared drive, writing it feels like a chore, and nobody ever reads the notes anyway. Your manager wants it fixed before the quarterly review and suggests a strongly worded reminder email to everyone.",
+    "options": [
+      {
+        "text": "Add a calendar prompt that opens the template automatically at the end of each client call.",
+        "correct": true,
+        "why": "Making the cue obvious tackles the 'we forget' problem. The habit loop starts with a cue; without one, good intentions never fire."
+      },
+      {
+        "text": "Send the strongly worded reminder and list the people who missed the most summaries.",
+        "correct": false,
+        "why": "Reminders and naming people add pressure without fixing the loop. Shame creates hiding, not habits, and the friction remains."
+      },
+      {
+        "text": "Cut the template to three fields so a summary takes under two minutes.",
+        "correct": true,
+        "why": "Making the response easy removes friction, a common reason habits fail. Fewer steps mean fewer chances to give up."
+      },
+      {
+        "text": "Show in the weekly meeting how one summary saved a client issue, and thank the person who wrote it.",
+        "correct": true,
+        "why": "A satisfying reward closes the loop. When people see the notes matter, the habit gains a reason to repeat."
+      },
+      {
+        "text": "Make summaries a performance metric with a penalty for each one missed.",
+        "correct": false,
+        "why": "Penalties produce rushed, empty summaries that game the number. It treats a design problem as a discipline problem."
+      }
+    ],
+    "ideas": [
+      "3.3",
+      "3.1"
+    ],
+    "tactic": "four-law-team-retro",
+    "lesson": "When a habit fails, check all four levers: an obvious cue, a reason to want it, an easy start and a satisfying finish."
+  },
+  {
+    "id": "c-the-10pm-kitchen-visit",
+    "chapter": 3,
+    "domain": "health",
+    "difficulty": 2,
+    "title": "The 10pm Kitchen Visit",
+    "scenario": "Most nights around ten you end up in the kitchen eating crisps while scrolling on your phone. You are not really hungry; the day has been long and this feels like your only time to yourself. You tried banning snacks from the house, but you ended up driving to the shop. You want to stop without feeling deprived.",
+    "options": [
+      {
+        "text": "Name what the snack gives you, such as unwinding or me-time, and plan another way to get it at ten.",
+        "correct": true,
+        "why": "Every habit answers a craving. Keeping the need and swapping the response works better than fighting the want with willpower."
+      },
+      {
+        "text": "Ban yourself from the kitchen after eight and weigh yourself every morning to stay strict.",
+        "correct": false,
+        "why": "Strict rules and daily weighing add stress and guilt, which often feed the very craving you are trying to resist."
+      },
+      {
+        "text": "Put the crisps out of easy reach and keep a tea or a book ready in the living room.",
+        "correct": true,
+        "why": "Making the bad habit difficult and the alternative easy changes the default without relying on late-night willpower."
+      },
+      {
+        "text": "Eat whatever you like for now and start a strict diet on the first of next month.",
+        "correct": false,
+        "why": "Waiting for a fresh start lets the loop run unchanged, and strict diets tend to swing back hard. Small changes now beat a big plan later."
+      },
+      {
+        "text": "Ask your partner to criticise you whenever they see you snacking at night.",
+        "correct": false,
+        "why": "Criticism adds shame and conflict rather than a better solution. Accountability works when it is agreed and supportive."
+      }
+    ],
+    "ideas": [
+      "3.2",
+      "3.4"
+    ],
+    "tactic": "swap-the-3pm-snack",
+    "lesson": "Keep the need, change the solution: name what the habit gives you and make a better answer easier."
+  },
+  {
+    "id": "c-dinner-lost-to-phones",
+    "chapter": 4,
+    "domain": "family",
+    "difficulty": 1,
+    "title": "Dinner Lost to Phones",
+    "scenario": "Family dinners have gone quiet. Everyone, you included, ends up looking at a phone, and nobody remembers deciding to pick it up. Your teenager says you check yours more than anyone. You want calmer, more connected evenings, but you are not sure when and why the phones come out.",
+    "options": [
+      {
+        "text": "For one week, everyone jots down when they reach for a phone at dinner and what happened just before.",
+        "correct": true,
+        "why": "Awareness comes first. Seeing the real cues, such as boredom or a buzz, shows what to change, and doing it together avoids blame."
+      },
+      {
+        "text": "Announce a strict no-phone rule tonight and confiscate devices from anyone who breaks it.",
+        "correct": false,
+        "why": "A sudden rule imposed before anyone understands the cues tends to cause conflict and collapse. Map the habit together first."
+      },
+      {
+        "text": "Decide the family is simply addicted to phones and stop trying.",
+        "correct": false,
+        "why": "Treating a habit as a fixed trait removes any chance of change. Habits are learned loops that can be redesigned."
+      },
+      {
+        "text": "Point out every time your teenager checks their phone so they notice it.",
+        "correct": false,
+        "why": "Policing one person creates resentment and ignores your own pickups. Awareness works best when everyone watches their own habits."
+      },
+      {
+        "text": "Buy everyone new phones with stricter parental settings.",
+        "correct": false,
+        "why": "New devices do not change the cues at the table, and the adults are part of the pattern too."
+      }
+    ],
+    "ideas": [
+      "4.2",
+      "4.3"
+    ],
+    "tactic": "name-it-before-you-scroll",
+    "lesson": "You cannot change a habit you cannot see. Notice the cues together first, then decide what to change."
+  },
+  {
+    "id": "c-exercise-more-somehow",
+    "chapter": 5,
+    "domain": "health",
+    "difficulty": 1,
+    "title": "Exercise More, Somehow",
+    "scenario": "Your new year plan says 'exercise more'. Three weeks in, you have managed two sessions, both on days you happened to have free time. Your work calendar fills fast and evenings vanish into chores. There is a gym five minutes from the office, and you usually eat lunch at your desk.",
+    "options": [
+      {
+        "text": "Write 'I will go to the gym at 12:30 on Monday, Wednesday and Friday' and block it in your calendar.",
+        "correct": true,
+        "why": "A plan with a time and a place removes the daily decision and protects the slot. Clarity often beats motivation."
+      },
+      {
+        "text": "Wait for a quieter week at work, then start properly.",
+        "correct": false,
+        "why": "Quiet weeks rarely come, and waiting is a way of avoiding the decision. A clear slot in a normal week works better."
+      },
+      {
+        "text": "Stack it: after you close your laptop for lunch, change and walk to the gym.",
+        "correct": true,
+        "why": "Linking the new habit to an existing routine gives it a dependable cue. The lunch break becomes the trigger."
+      },
+      {
+        "text": "Go whenever you feel energetic, so the sessions are always good ones.",
+        "correct": false,
+        "why": "Relying on feelings leaves the habit to chance, and energy is lowest exactly when you need the habit most."
+      },
+      {
+        "text": "Sign up for a 6am bootcamp even though you are not a morning person.",
+        "correct": false,
+        "why": "A plan that fights your schedule and temperament fails quickly. Choose a time you can actually keep."
+      }
+    ],
+    "ideas": [
+      "5.1",
+      "5.3"
+    ],
+    "tactic": "book-the-habit",
+    "lesson": "Give the habit a time, a place and an anchor. Vague intentions lose to a booked slot."
+  },
+  {
+    "id": "c-thanks-that-never-happen",
+    "chapter": 5,
+    "domain": "work",
+    "difficulty": 2,
+    "title": "Thanks That Never Happen",
+    "scenario": "You lead a team of seven. In the last engagement survey, people said they rarely hear when they do good work. You do appreciate them, but by the time you think of saying something, the moment has passed. You run a 15-minute standup every morning at 9:30, and the team chat channel is read by everyone.",
+    "options": [
+      {
+        "text": "Right after standup ends, post one specific thank-you in the team channel.",
+        "correct": true,
+        "why": "Stacking the new habit on the daily standup gives it a dependable cue, and specific thanks shows you noticed."
+      },
+      {
+        "text": "Keep a running list of wins during the day so you always have something ready.",
+        "correct": true,
+        "why": "Preparing the material removes the effort of remembering on the spot, which makes the habit easy to repeat."
+      },
+      {
+        "text": "Plan a big recognition event at the end of the quarter to make up for it.",
+        "correct": false,
+        "why": "A rare, large event does not fix the daily gap the survey described. Recognition works best when it is frequent and timely."
+      },
+      {
+        "text": "Promise yourself to thank people whenever you remember.",
+        "correct": false,
+        "why": "Remembering is exactly what has been failing. Without a cue, good intentions slip away."
+      },
+      {
+        "text": "Track who you have thanked each week so quieter people are not left out.",
+        "correct": true,
+        "why": "A simple record keeps the habit fair and visible, so recognition does not always go to the loudest work."
+      }
+    ],
+    "ideas": [
+      "5.3",
+      "5.4"
+    ],
+    "tactic": "stack-it-on-standup",
+    "lesson": "Attach the habit to something you already do every day, and prepare the material in advance."
+  },
+  {
+    "id": "c-the-kitchen-table-office",
+    "chapter": 6,
+    "domain": "work",
+    "difficulty": 1,
+    "title": "The Kitchen Table Office",
+    "scenario": "Since your company went remote, you have worked at the kitchen table. You start each day planning deep work and end it having done laundry, snacks and twenty small tasks. Your partner also works in the kitchen two days a week. There is a small spare corner in the bedroom with a shelf.",
+    "options": [
+      {
+        "text": "Set up the bedroom corner as a work-only spot and do nothing else there.",
+        "correct": true,
+        "why": "One space, one use: when a place means only work, it cues focus. The kitchen cues snacks and chores."
+      },
+      {
+        "text": "Try harder to ignore the kitchen and set a strict rule against snacking.",
+        "correct": false,
+        "why": "Fighting a room full of cues with willpower is tiring and rarely lasts. Changing the environment changes behaviour more reliably."
+      },
+      {
+        "text": "Work from the sofa instead, so you are more comfortable.",
+        "correct": false,
+        "why": "The sofa is linked to rest and scrolling, so it competes with focused work. Comfort is not the same as a good cue."
+      },
+      {
+        "text": "Pack the laptop away at the end of each day to mark a clear stop.",
+        "correct": true,
+        "why": "A visible start and stop ritual reinforces the boundary between work and home, making each space's cues clearer."
+      },
+      {
+        "text": "Buy noise-cancelling headphones and keep working at the kitchen table.",
+        "correct": false,
+        "why": "Headphones help with noise but not with the sight of food and chores that keeps pulling you away."
+      }
+    ],
+    "ideas": [
+      "6.3",
+      "6.1"
+    ],
+    "tactic": "one-desk-one-job",
+    "lesson": "Give each space one job. Your surroundings cue behaviour more reliably than willpower."
+  },
+  {
+    "id": "c-the-spreadsheet-nobody-opens",
+    "chapter": 6,
+    "domain": "business",
+    "difficulty": 2,
+    "title": "The Spreadsheet Nobody Opens",
+    "scenario": "You own a small café. Your accountant built a weekly cash spreadsheet, but it sits in a folder you never open until there is a problem. Twice this year you discovered a cash crunch only when a supplier payment bounced. Every morning you open your laptop to check orders and email.",
+    "options": [
+      {
+        "text": "Make the five key cash numbers the first browser tab that opens each morning.",
+        "correct": true,
+        "why": "Visible cues trigger behaviour. Putting the numbers where you already look turns checking from a chore into a habit."
+      },
+      {
+        "text": "Add one line under the numbers: this week's money action, such as chasing one invoice.",
+        "correct": true,
+        "why": "Pairing the cue with a small, clear action turns awareness into behaviour instead of just worry."
+      },
+      {
+        "text": "Promise yourself to open the spreadsheet every Monday from now on.",
+        "correct": false,
+        "why": "The spreadsheet has not moved, so the habit still depends on memory. Change the environment, not only the intention."
+      },
+      {
+        "text": "Hire a part-time finance manager before you understand the numbers yourself.",
+        "correct": false,
+        "why": "Help may be useful later, but it does not build your own habit of knowing the basics. The problem is visibility, not expertise."
+      },
+      {
+        "text": "Print the spreadsheet once a quarter and review it in detail.",
+        "correct": false,
+        "why": "A quarterly review arrives too late to spot a weekly crunch. For this habit, frequency matters more than depth."
+      }
+    ],
+    "ideas": [
+      "6.2",
+      "6.1"
+    ],
+    "tactic": "dashboard-as-homepage",
+    "lesson": "Put the cue where your eyes already go, and pair it with one small action."
+  },
+  {
+    "id": "c-death-by-notification",
+    "chapter": 7,
+    "domain": "work",
+    "difficulty": 2,
+    "title": "Death by Notification",
+    "scenario": "You are an analyst with a report due Friday. Your chat app pings every few minutes from twenty channels, most of them social. Each time you glance, reply and lose the thread of your analysis. You have tried to resist checking, but by mid-morning you are answering messages again. Your manager expects replies to direct messages within a couple of hours.",
+    "options": [
+      {
+        "text": "Leave or mute channels you do not need and keep alerts only for direct messages.",
+        "correct": true,
+        "why": "Removing a cue is easier than resisting it. Fewer notifications mean fewer cravings to check."
+      },
+      {
+        "text": "Block two focus periods a day with do-not-disturb and a status saying when you will reply.",
+        "correct": true,
+        "why": "Scheduled focus with a clear status removes temptation while still meeting your manager's two-hour expectation."
+      },
+      {
+        "text": "Keep every notification on and promise yourself not to look, to test your discipline.",
+        "correct": false,
+        "why": "Constant cues drain willpower all day. People who seem disciplined usually just face fewer temptations."
+      },
+      {
+        "text": "Turn off all notifications, direct messages included, for the whole week.",
+        "correct": false,
+        "why": "Going dark breaks the reasonable expectation your manager set and creates a bigger problem. Remove the noisy cues, not the essential ones."
+      },
+      {
+        "text": "Check the muted channels at two set times, before lunch and late afternoon.",
+        "correct": true,
+        "why": "Batching keeps you informed on your schedule instead of the notification's, protecting focus without losing touch."
+      }
+    ],
+    "ideas": [
+      "7.3",
+      "7.1"
+    ],
+    "tactic": "mute-the-noisy-channel",
+    "lesson": "Remove the cues instead of resisting them, and batch the rest at times you choose."
+  },
+  {
+    "id": "c-the-midnight-basket",
+    "chapter": 7,
+    "domain": "self",
+    "difficulty": 1,
+    "title": "The Midnight Basket",
+    "scenario": "You keep making small online purchases late at night, mostly things you see in sale emails or app notifications. By the end of the month the total is far more than you expected, and half the items sit unopened. You do not want to give up treats entirely, but you want the impulse buys to stop.",
+    "options": [
+      {
+        "text": "Unsubscribe from sale emails, turn off shopping app alerts and remove saved card details.",
+        "correct": true,
+        "why": "Most of these purchases start with a cue you did not go looking for. Hiding the cues and adding friction stops the loop early."
+      },
+      {
+        "text": "Keep the alerts on but set a strict monthly budget in a spreadsheet.",
+        "correct": false,
+        "why": "A budget does not remove the late-night triggers, so the urge still arrives every evening. Remove the cues first."
+      },
+      {
+        "text": "Shop only when you feel you deserve it after a hard day.",
+        "correct": false,
+        "why": "Tying shopping to rewarding yourself after hard days strengthens the late-night impulse loop rather than breaking it."
+      },
+      {
+        "text": "Freeze your bank card entirely and ask friends to buy things for you.",
+        "correct": false,
+        "why": "Extreme measures are hard to keep and shift the problem onto others. Targeted friction on the impulse cues works better."
+      },
+      {
+        "text": "Delete your email account to escape the sales messages.",
+        "correct": false,
+        "why": "This is drastic and creates new problems. Unsubscribing from specific senders removes the cue without losing essential mail."
+      }
+    ],
+    "ideas": [
+      "7.3",
+      "7.2"
+    ],
+    "tactic": "unsubscribe-from-temptation",
+    "lesson": "Remove the cues that start the craving. Avoiding temptation is easier than resisting it."
+  },
+  {
+    "id": "c-the-dreaded-invoicing-hour",
+    "chapter": 8,
+    "domain": "business",
+    "difficulty": 2,
+    "title": "The Dreaded Invoicing Hour",
+    "scenario": "You are a freelance designer. You love the client work but dread invoicing and bookkeeping. Invoices often go out weeks late, and once you ran short of cash while three clients owed you money. You love the café downstairs and a podcast series you never seem to have time for.",
+    "options": [
+      {
+        "text": "Allow yourself the favourite podcast and the café coffee only during a weekly admin hour.",
+        "correct": true,
+        "why": "Temptation bundling pairs a want with a need, so the boring task becomes something you look forward to."
+      },
+      {
+        "text": "Promise yourself a big holiday if you invoice on time for a whole year.",
+        "correct": false,
+        "why": "A distant reward does little for a task you face every week. Immediate pleasures change behaviour more than far-off ones."
+      },
+      {
+        "text": "Stack admin hour onto an existing routine, such as right after your Friday client update.",
+        "correct": true,
+        "why": "An existing routine provides the cue; with the treat attached, the habit has both a trigger and a pull."
+      },
+      {
+        "text": "Hire someone to do all your admin before checking whether you can afford it.",
+        "correct": false,
+        "why": "Outsourcing may help later, but committing to a cost while cash is tight can make the original problem worse."
+      },
+      {
+        "text": "Invoice only when every project is finished, so you can do it all in one go.",
+        "correct": false,
+        "why": "Batching everything at the end widens the gap between work and payment, which caused the cash shortage."
+      }
+    ],
+    "ideas": [
+      "8.3",
+      "8.5"
+    ],
+    "tactic": "bundle-the-boring-admin",
+    "lesson": "Pair the task you need to do with something you want, and attach it to a routine you already have."
+  },
+  {
+    "id": "c-tests-are-optional-here",
+    "chapter": 9,
+    "domain": "work",
+    "difficulty": 3,
+    "title": "Tests Are Optional Here",
+    "scenario": "You are a new tech lead. Only two of your eight engineers write automated tests; the rest skip them under deadline pressure and nobody comments. Incidents happen most weekends. Your director suggests a rule that any pull request without tests is rejected. Two respected senior engineers privately agree tests matter but do not want to look preachy.",
+    "options": [
+      {
+        "text": "Describe the team you want to be, one that ships with tests, and show coverage in every review.",
+        "correct": true,
+        "why": "Habits follow group norms. Framing it as who we are and making the behaviour visible helps it feel normal."
+      },
+      {
+        "text": "Ask the two senior engineers to model tests visibly and pair with others for a month.",
+        "correct": true,
+        "why": "People copy those they admire. Respected colleagues doing it openly spreads the norm faster than any rule."
+      },
+      {
+        "text": "Bring in the strict rejection rule immediately and announce it by email.",
+        "correct": false,
+        "why": "A rule imposed without changing the norm often produces box-ticking tests and resentment, especially while deadlines stay tight."
+      },
+      {
+        "text": "Publish a weekly list of the engineers with the lowest test coverage.",
+        "correct": false,
+        "why": "Public shaming damages trust and encourages hiding problems. Norms spread through belonging, not humiliation."
+      },
+      {
+        "text": "Provide test templates and a pairing session so writing tests is easy to start.",
+        "correct": true,
+        "why": "Lowering the barrier makes the new norm easy to join, especially for people unsure how to write good tests."
+      }
+    ],
+    "ideas": [
+      "9.5",
+      "9.3"
+    ],
+    "tactic": "people-like-us-norm",
+    "lesson": "Make the habit normal for the group: visible, modelled by respected people and easy to join."
+  },
+  {
+    "id": "c-most-of-a-bottle",
+    "chapter": 10,
+    "domain": "self",
+    "difficulty": 2,
+    "title": "Most of a Bottle",
+    "scenario": "Your one glass of wine after work has crept up to most of a bottle on weeknights. You do not feel dependent, but mornings are foggy. When you think about it, the first glass is mainly a signal that the workday is over and you can switch off. Your partner has noticed and asked, gently, whether you are okay.",
+    "options": [
+      {
+        "text": "Create a new end-of-work ritual, such as a shower, a walk or a special alcohol-free drink.",
+        "correct": true,
+        "why": "The craving is for switching off, not the wine itself. A new ritual can meet the same need without the costs."
+      },
+      {
+        "text": "Write down the weekly cost in money and lost sleep, and keep it where the wine is kept.",
+        "correct": true,
+        "why": "Making the costs vivid changes the prediction your brain makes when the cue appears, so the habit looks less attractive."
+      },
+      {
+        "text": "Tell your partner you are fine and change the subject.",
+        "correct": false,
+        "why": "Avoiding the conversation removes support and keeps the habit hidden. Kind, honest accountability is a strength."
+      },
+      {
+        "text": "Stop completely tomorrow without telling anyone, and handle it alone.",
+        "correct": false,
+        "why": "Going it alone with a sudden rule tends to fail, and if there is any dependence, stopping suddenly needs medical advice."
+      },
+      {
+        "text": "Switch to spirits so you drink a smaller volume.",
+        "correct": false,
+        "why": "Changing the drink does not address the need behind it, and stronger drinks can make the problem worse."
+      }
+    ],
+    "ideas": [
+      "10.1",
+      "10.5"
+    ],
+    "tactic": "find-the-real-need",
+    "lesson": "Name the need behind the habit, meet it in a better way and make the real costs visible."
+  },
+  {
+    "id": "c-polishing-in-private",
+    "chapter": 11,
+    "domain": "work",
+    "difficulty": 1,
+    "title": "Polishing in Private",
+    "scenario": "Your strategy report is due in two weeks. You have spent four days researching and refining the outline, and nobody has seen a single page. Last time you worked like this, your manager asked for a completely different angle the day before the deadline. You feel you need a few more days before anything is good enough to share.",
+    "options": [
+      {
+        "text": "Share a rough two-page draft this week and ask for feedback on the structure only.",
+        "correct": true,
+        "why": "Action beats motion. An early draft gets feedback while changing course is still cheap, unlike more private polishing."
+      },
+      {
+        "text": "Keep researching until the outline is perfect, then write it all in the last week.",
+        "correct": false,
+        "why": "More preparation feels productive but repeats the risk of a late surprise. Planning is not progress until something is shared."
+      },
+      {
+        "text": "Ask your manager for a deadline extension so you have time to perfect it.",
+        "correct": false,
+        "why": "More time feeds the same private process. The problem is the lack of feedback, not the lack of time."
+      },
+      {
+        "text": "Send the full report early without saying it is a draft, and hope it is accepted.",
+        "correct": false,
+        "why": "Without framing, people judge polish and details rather than direction. A clearly labelled draft gets the feedback you need."
+      },
+      {
+        "text": "Hand the writing to a junior colleague and review it at the end.",
+        "correct": false,
+        "why": "Delegating does not close the feedback gap and may create two rounds of rework."
+      }
+    ],
+    "ideas": [
+      "11.1",
+      "11.2"
+    ],
+    "tactic": "ship-the-rough-draft",
+    "lesson": "Planning feels like progress, but only action gets feedback. Share rough work early and often."
+  },
+  {
+    "id": "c-expense-claims-in-limbo",
+    "chapter": 12,
+    "domain": "business",
+    "difficulty": 2,
+    "title": "Expense Claims in Limbo",
+    "scenario": "You manage operations at a 60-person company. Expense claims arrive months late, and finance spends days every quarter chasing receipts. The process uses a seven-field spreadsheet, a scanned receipt, manager sign-off for every amount and an email to a shared inbox. The CFO suggests a monthly reminder email and a late-fee penalty for staff.",
+    "options": [
+      {
+        "text": "Map every step and remove the ones that add no real control, such as sign-off on small amounts.",
+        "correct": true,
+        "why": "Removing friction changes behaviour more than adding rules. Every step you delete lowers the chance people give up."
+      },
+      {
+        "text": "Let people submit by photographing a receipt the moment they pay.",
+        "correct": true,
+        "why": "Capturing at the point of spending makes the right action the easy one, instead of relying on memory weeks later."
+      },
+      {
+        "text": "Introduce the late-fee penalty and the monthly reminder.",
+        "correct": false,
+        "why": "Penalties and reminders punish people for a process that is hard to follow. Fix the friction before adding pressure."
+      },
+      {
+        "text": "Run a training session on filling in the spreadsheet correctly.",
+        "correct": false,
+        "why": "Training teaches people to cope with a clumsy process instead of removing the clumsiness. The fix is fewer steps."
+      },
+      {
+        "text": "Reject any claim older than 30 days without changing the process.",
+        "correct": false,
+        "why": "A hard cut-off may cost staff their money while the slow, frustrating process stays exactly the same."
+      }
+    ],
+    "ideas": [
+      "12.3",
+      "12.1"
+    ],
+    "tactic": "one-click-process",
+    "lesson": "To change behaviour, delete steps before you add rules."
+  },
+  {
+    "id": "c-the-snooze-button-wins",
+    "chapter": 12,
+    "domain": "health",
+    "difficulty": 1,
+    "title": "The Snooze Button Wins",
+    "scenario": "You plan to run before work three mornings a week. Most mornings the alarm goes off, you think about finding your kit, filling a bottle and hunting for headphones, and you hit snooze instead. On the evenings before, you are usually relaxed and in a good mood.",
+    "options": [
+      {
+        "text": "Lay out your clothes, shoes, headphones and a full bottle the night before.",
+        "correct": true,
+        "why": "Priming the environment moves the effort to the evening, when it is easy, and leaves the morning with one obvious step."
+      },
+      {
+        "text": "Set three alarms ten minutes apart so you cannot sleep through.",
+        "correct": false,
+        "why": "More alarms add stress but leave the same friction. The decision is still hard because the steps are still many."
+      },
+      {
+        "text": "Switch to running at lunchtime, even though your office has no showers.",
+        "correct": false,
+        "why": "Moving to a time with more friction swaps one barrier for another. Remove barriers rather than add new ones."
+      },
+      {
+        "text": "Take a rest week every time you miss a run, to recover your motivation.",
+        "correct": false,
+        "why": "Long breaks after misses weaken the habit. The aim is to get back on track quickly, not to step away."
+      },
+      {
+        "text": "Buy expensive new running gear to make it feel special.",
+        "correct": false,
+        "why": "New gear may motivate briefly, but if it still has to be found and packed each morning, the friction remains."
+      }
+    ],
+    "ideas": [
+      "12.4",
+      "12.2"
+    ],
+    "tactic": "prime-the-night-before",
+    "lesson": "Prepare tomorrow's habit tonight, so the morning needs only one easy step."
+  },
+  {
+    "id": "c-an-hour-every-night",
+    "chapter": 13,
+    "domain": "self",
+    "difficulty": 2,
+    "title": "An Hour Every Night",
+    "scenario": "You set a goal to read for an hour every night. You managed it twice in the first week and not at all since. By 10pm you are too tired to start something that big, so you scroll instead. You still want to be someone who reads, and the same book has sat on your bedside table for a month.",
+    "options": [
+      {
+        "text": "Change the goal to reading one page in bed, with permission to stop there.",
+        "correct": true,
+        "why": "The Two-Minute Rule makes starting so easy you cannot say no, and most nights you will read more once you begin."
+      },
+      {
+        "text": "Put the book on your pillow so it is the first thing you see at bedtime.",
+        "correct": true,
+        "why": "An obvious cue in the right place supports the small start; you do not need to remember or search."
+      },
+      {
+        "text": "Keep the one-hour target and fight the tiredness with an evening coffee.",
+        "correct": false,
+        "why": "Coffee hurts sleep, and the big target still makes starting feel heavy. Shrink the habit instead of forcing it."
+      },
+      {
+        "text": "Wait until your next holiday to restart the reading habit properly.",
+        "correct": false,
+        "why": "Holidays are not normal life, so a habit built there rarely survives back home. Start small in your real routine."
+      },
+      {
+        "text": "Track pages per night and feel bad about any night under twenty.",
+        "correct": false,
+        "why": "Judging by volume too early makes the habit feel like failure. Master showing up first, then grow it."
+      }
+    ],
+    "ideas": [
+      "13.2",
+      "13.3"
+    ],
+    "tactic": "the-two-minute-version",
+    "lesson": "Shrink a new habit to a two-minute start. Master showing up before you grow it."
+  },
+  {
+    "id": "c-nine-days-of-avoidance",
+    "chapter": 13,
+    "domain": "work",
+    "difficulty": 2,
+    "title": "Nine Days of Avoidance",
+    "scenario": "A quarterly report has been on your list for nine days. Each morning you look at it, feel overwhelmed and pick something smaller instead. The deadline is next Thursday and your manager has already asked twice how it is going. You know the content well; the problem is getting started.",
+    "options": [
+      {
+        "text": "Make the first action tiny: open the file and type the first heading before checking email.",
+        "correct": true,
+        "why": "The decisive moment is the first minute. A tiny start makes the next step far easier than facing the whole report."
+      },
+      {
+        "text": "At the end of each session, write the next small step at the top of the document.",
+        "correct": true,
+        "why": "A ready next step removes tomorrow's decision about where to begin, which keeps the momentum going."
+      },
+      {
+        "text": "Clear every other task first so you can give the report your full attention.",
+        "correct": false,
+        "why": "Small tasks keep expanding to fill the time. Waiting for a clear desk is a polite form of avoidance."
+      },
+      {
+        "text": "Wait until you feel inspired, since good writing cannot be forced.",
+        "correct": false,
+        "why": "Inspiration usually follows starting, not the other way round. Showing up creates the momentum."
+      },
+      {
+        "text": "Book two short sessions each morning this week, before you open your inbox.",
+        "correct": true,
+        "why": "Protected time for small steps beats one huge session and puts the start in the morning's decisive moment."
+      }
+    ],
+    "ideas": [
+      "13.1",
+      "13.2"
+    ],
+    "tactic": "just-open-the-file",
+    "lesson": "Make the first minute tiny and decided in advance. Momentum does the rest."
+  },
+  {
+    "id": "c-nothing-left-to-save",
+    "chapter": 14,
+    "domain": "self",
+    "difficulty": 1,
+    "title": "Nothing Left to Save",
+    "scenario": "Every month you plan to save whatever is left after bills and spending, and every month there is nothing left. Your employer offers a pension scheme with matching contributions that you have never joined. You earn enough to save a modest amount, as long as you never see it in your current account first.",
+    "options": [
+      {
+        "text": "Set up an automatic transfer to savings for the day after payday.",
+        "correct": true,
+        "why": "A one-time choice that runs on its own beats a monthly battle with temptation. You save before you can spend."
+      },
+      {
+        "text": "Join the employer pension scheme to collect the matching contributions.",
+        "correct": true,
+        "why": "Joining is a single decision that pays off for years, and the match is money you lose every month you do not act."
+      },
+      {
+        "text": "Keep saving what is left, but try harder to spend less each month.",
+        "correct": false,
+        "why": "The leftover method has failed every month because it relies on daily willpower against many temptations."
+      },
+      {
+        "text": "Skip regular saving and put away a large sum whenever you get a bonus.",
+        "correct": false,
+        "why": "Waiting for windfalls makes saving rare and uncertain. Small automatic amounts compound reliably."
+      },
+      {
+        "text": "Check your bank balance several times a day to stay motivated.",
+        "correct": false,
+        "why": "Constant checking adds anxiety without changing the system. Automation removes the need for daily decisions."
+      }
+    ],
+    "ideas": [
+      "14.2",
+      "14.3"
+    ],
+    "tactic": "automate-the-savings",
+    "lesson": "Make good choices once and let automation repeat them. Do not rely on monthly willpower."
+  },
+  {
+    "id": "c-launch-is-months-away",
+    "chapter": 15,
+    "domain": "work",
+    "difficulty": 2,
+    "title": "Launch Is Months Away",
+    "scenario": "Your team is building a product that launches in five months. Morale is slipping: people work long days, but the only celebration on the calendar is the launch party. Daily work is bug fixes and reviews that nobody seems to notice. You want to keep energy up without waiting for launch day.",
+    "options": [
+      {
+        "text": "Start a quick ritual for small wins, such as a wins channel or a short round of applause at standup.",
+        "correct": true,
+        "why": "Behaviour followed by an immediate, satisfying feeling gets repeated. Small, fast rewards make long projects feel like progress."
+      },
+      {
+        "text": "Keep a visible board where each finished milestone moves to done.",
+        "correct": true,
+        "why": "Seeing progress is itself rewarding, and it connects daily tasks to the distant goal."
+      },
+      {
+        "text": "Promise an even bigger launch party to motivate everyone.",
+        "correct": false,
+        "why": "A bigger delayed reward does not change how today's work feels. The gap is the lack of immediate satisfaction."
+      },
+      {
+        "text": "Celebrate only perfect results, so praise stays meaningful.",
+        "correct": false,
+        "why": "Waiting for perfection makes rewards rare and turns progress into silent effort, which is what is draining morale."
+      },
+      {
+        "text": "Remind the team that they are paid to work, not to be thanked.",
+        "correct": false,
+        "why": "Dismissing the need for recognition makes morale worse. Immediate rewards are part of what keeps any habit going."
+      }
+    ],
+    "ideas": [
+      "15.4",
+      "15.1"
+    ],
+    "tactic": "celebrate-small-wins",
+    "lesson": "Add a small, immediate reward to work whose real payoff is months away."
+  },
+  {
+    "id": "c-skipping-takeaway-feels-bad",
+    "chapter": 15,
+    "domain": "family",
+    "difficulty": 2,
+    "title": "Skipping Takeaway Feels Bad",
+    "scenario": "Your family agreed to cut takeaway from four nights a week to one. On the nights you cook, it feels like a sacrifice with nothing to show for it, and the children complain. By Thursday someone usually suggests ordering just this once. You want the new routine to feel like a win rather than a loss.",
+    "options": [
+      {
+        "text": "Move the money you would have spent into a family pot for something everyone wants.",
+        "correct": true,
+        "why": "Making avoidance visible gives an immediate reward to a habit that otherwise offers nothing to see."
+      },
+      {
+        "text": "Let a different family member choose one easy home meal each week.",
+        "correct": true,
+        "why": "Giving everyone a stake makes the habit attractive and shared, which reduces the feeling of loss."
+      },
+      {
+        "text": "Ban takeaway completely and refuse to discuss it.",
+        "correct": false,
+        "why": "Strict bans create resentment and tend to collapse. A small, satisfying reward works better than a rule that feels like punishment."
+      },
+      {
+        "text": "Tell the children that wanting takeaway is greedy.",
+        "correct": false,
+        "why": "Shaming the want makes the habit feel like deprivation and creates conflict, which makes the old habit more attractive."
+      },
+      {
+        "text": "Promise a big holiday in two years if everyone sticks to the plan.",
+        "correct": false,
+        "why": "A reward that far away barely affects a Thursday-night choice. The reward needs to be soon and visible."
+      }
+    ],
+    "ideas": [
+      "15.5",
+      "15.3"
+    ],
+    "tactic": "price-the-takeaway",
+    "lesson": "Avoidance gives you nothing to see. Make each skipped habit visible and rewarding right away."
+  },
+  {
+    "id": "c-one-trip-three-weeks-off",
+    "chapter": 16,
+    "domain": "health",
+    "difficulty": 1,
+    "title": "One Trip, Three Weeks Off",
+    "scenario": "You had a strong run of morning workouts until a three-day work trip. You missed one day, then another because the streak was already broken, and now three weeks have passed. Another trip is coming next month. You want a plan that survives disruptions.",
+    "options": [
+      {
+        "text": "Adopt a never-miss-twice rule, with a ten-minute minimum version for travel days.",
+        "correct": true,
+        "why": "Missing once is an accident; missing twice starts a new habit. A small fallback keeps the routine alive on bad days."
+      },
+      {
+        "text": "Accept that travel ruins routines and restart only when life settles down.",
+        "correct": false,
+        "why": "Life rarely settles down. Waiting for perfect conditions lets the habit disappear."
+      },
+      {
+        "text": "Make up for missed days with double workouts when you get home.",
+        "correct": false,
+        "why": "Punishing make-up sessions make the habit feel worse and risk injury. Recovery means getting back on track, not paying debts."
+      },
+      {
+        "text": "Count only perfect weeks and reset the counter to zero whenever you miss.",
+        "correct": false,
+        "why": "Resetting to zero turns one miss into a reason to give up. Track quick recoveries, not just unbroken streaks."
+      },
+      {
+        "text": "Turn down future work trips so your routine is never disrupted.",
+        "correct": false,
+        "why": "Avoiding life to protect a habit is not sustainable. Plan a minimum version so the habit fits real life."
+      }
+    ],
+    "ideas": [
+      "16.3",
+      "16.5"
+    ],
+    "tactic": "never-miss-twice",
+    "lesson": "Missing once is fine. Never miss twice, and keep a tiny version ready for bad days."
+  },
+  {
+    "id": "c-fast-closes-unhappy-customers",
+    "chapter": 16,
+    "domain": "business",
+    "difficulty": 3,
+    "title": "Fast Closes, Unhappy Customers",
+    "scenario": "You run a support team. The dashboard shows tickets closed faster than ever, and the team beats its target every week. Yet customer complaints are rising, and many customers come back days later with the same problem. The team is proud of its numbers, and you do not want to crush morale.",
+    "options": [
+      {
+        "text": "Track reopened tickets next to closing time on the same dashboard.",
+        "correct": true,
+        "why": "Pairing speed with a quality measure stops the team improving one number by sacrificing the real goal."
+      },
+      {
+        "text": "Read five random tickets together each week to see what the numbers miss.",
+        "correct": true,
+        "why": "Real examples keep the purpose in view and show whether the metric still reflects good service."
+      },
+      {
+        "text": "Tighten the closing-time target, since the team is clearly capable of more.",
+        "correct": false,
+        "why": "A tighter speed target pushes harder on the same distorted metric, which is what is driving the complaints."
+      },
+      {
+        "text": "Publicly recognise first-time resolutions, not just volume.",
+        "correct": true,
+        "why": "What is rewarded gets repeated. Rewarding the real outcome redirects effort without blaming the team."
+      },
+      {
+        "text": "Remove the dashboard entirely so nobody chases numbers.",
+        "correct": false,
+        "why": "Tracking drives habits, so removing feedback loses the benefit. The fix is to track the right thing, not nothing."
+      }
+    ],
+    "ideas": [
+      "16.4",
+      "16.1"
+    ],
+    "tactic": "track-the-right-number",
+    "lesson": "When a measure becomes the target, pair it with a quality check and reward the real goal."
+  },
+  {
+    "id": "c-quitting-in-secret-again",
+    "chapter": 17,
+    "domain": "health",
+    "difficulty": 3,
+    "title": "Quitting in Secret Again",
+    "scenario": "You have tried to quit vaping three times, always quietly and alone. Each time, by day five you bought a new device, nobody knew and nothing happened. Your partner and a close friend have both said they would support you. You want this attempt to stick.",
+    "options": [
+      {
+        "text": "Write a short habit contract with a start date and sign it with your partner and friend.",
+        "correct": true,
+        "why": "A clear, shared agreement adds social weight and turns a private promise into one that matters to people you care about."
+      },
+      {
+        "text": "Agree a small, certain consequence within a day if you slip, such as a donation you dislike.",
+        "correct": true,
+        "why": "Costs work when they are immediate and real. A small certain cost beats vague worries about future health."
+      },
+      {
+        "text": "Combine the contract with proven support, such as nicotine replacement or a stop-smoking service.",
+        "correct": true,
+        "why": "Accountability helps you show up; real support makes the cravings manageable. Together they work better than either alone."
+      },
+      {
+        "text": "Keep it private again, so there is no embarrassment if it fails.",
+        "correct": false,
+        "why": "Quitting in private is what failed three times. When nobody knows, a slip costs nothing and the habit returns."
+      },
+      {
+        "text": "Ask your partner to shame you on social media if you slip.",
+        "correct": false,
+        "why": "Public shaming harms trust and wellbeing, and shame often drives hiding. Accountability should be kind and agreed."
+      }
+    ],
+    "ideas": [
+      "17.2",
+      "17.5"
+    ],
+    "tactic": "sign-a-habit-contract",
+    "lesson": "Share the commitment, make slipping cost something small and soon, and add real support."
+  },
+  {
+    "id": "c-ten-minutes-late-every-week",
+    "chapter": 17,
+    "domain": "work",
+    "difficulty": 2,
+    "title": "Ten Minutes Late, Every Week",
+    "scenario": "Your team's weekly meeting is booked for 10:00 but starts at 10:12 most weeks because a few people drift in. The punctual people are frustrated. Some of the lateness comes from back-to-back meetings that end exactly at 10:00. You lead the meeting and want to fix it without souring the atmosphere.",
+    "options": [
+      {
+        "text": "Agree as a team to start on time, and that the last person to arrive takes the notes.",
+        "correct": true,
+        "why": "A light, immediate, fair cost makes lateness unsatisfying, and agreeing it together keeps it friendly."
+      },
+      {
+        "text": "Set team meetings to end five minutes early so people can arrive on time.",
+        "correct": true,
+        "why": "Some lateness is a scheduling problem. Removing the cause is fairer than penalising people for it."
+      },
+      {
+        "text": "Wait for everyone to arrive before starting, so nobody misses anything.",
+        "correct": false,
+        "why": "Waiting rewards lateness and punishes the punctual. Starting on time makes arriving late immediately unsatisfying."
+      },
+      {
+        "text": "Name the late arrivals in the team chat after each meeting.",
+        "correct": false,
+        "why": "Public naming damages trust and ignores the back-to-back meetings that cause some of the lateness."
+      },
+      {
+        "text": "Introduce a fine deducted from pay for every late arrival.",
+        "correct": false,
+        "why": "Pay penalties are disproportionate and may break rules or trust. A small, friendly cost works better."
+      }
+    ],
+    "ideas": [
+      "17.1",
+      "17.5"
+    ],
+    "tactic": "late-meeting-cost",
+    "lesson": "Fix the scheduling cause, then add a small, fair, immediate cost the team agrees on."
+  },
+  {
+    "id": "c-the-founder-who-hates-calls",
+    "chapter": 18,
+    "domain": "business",
+    "difficulty": 2,
+    "title": "The Founder Who Hates Calls",
+    "scenario": "You are the introverted founder of a small software company. Every sales book says to make cold calls, but after three tries you felt awful and stopped. You write clear, thoughtful emails and enjoy long one-to-one conversations with customers who already know you. The sales pipeline is nearly empty.",
+    "options": [
+      {
+        "text": "Build a daily habit of three personalised, well-researched outreach emails.",
+        "correct": true,
+        "why": "Habits are easier when they suit your temperament. Writing plays to your strengths, so you are likely to keep doing it."
+      },
+      {
+        "text": "Test written outreach and referral partnerships for a month, then keep what brings meetings.",
+        "correct": true,
+        "why": "Explore, then exploit: try a few options and focus on what works for you, instead of forcing one playbook."
+      },
+      {
+        "text": "Force yourself to make fifty cold calls a day until it feels natural.",
+        "correct": false,
+        "why": "A habit that constantly fights your nature is likely to collapse. Choose a game where your strengths give you an edge."
+      },
+      {
+        "text": "Avoid selling entirely and hope the product sells itself.",
+        "correct": false,
+        "why": "Playing to your strengths does not mean skipping essential work. Find a selling style that fits rather than no selling at all."
+      },
+      {
+        "text": "Copy a famous extroverted founder's daily routine exactly.",
+        "correct": false,
+        "why": "Someone else's routine suits their temperament. Adapt habits to your own strengths instead of copying them whole."
+      }
+    ],
+    "ideas": [
+      "18.2",
+      "18.3"
+    ],
+    "tactic": "pick-your-selling-style",
+    "lesson": "Pick the version of a habit that fits your temperament. Test a few, then focus on what works."
+  },
+  {
+    "id": "c-month-three-feels-flat",
+    "chapter": 19,
+    "domain": "self",
+    "difficulty": 1,
+    "title": "Month Three Feels Flat",
+    "scenario": "You started a blog three months ago. The first month was exciting and you wrote eight posts. Now writing feels routine, you have skipped five sessions in a row, and you keep telling yourself you will return when you feel inspired. A handful of readers have emailed to say they enjoy it.",
+    "options": [
+      {
+        "text": "Keep the scheduled sessions and allow a smaller minimum, such as 200 words, on flat days.",
+        "correct": true,
+        "why": "Boredom, not difficulty, is the real threat. Keeping the schedule with a smaller minimum protects the habit when excitement fades."
+      },
+      {
+        "text": "Wait for inspiration to return before writing again.",
+        "correct": false,
+        "why": "Inspiration rarely returns on its own once the novelty fades. Showing up on schedule is what keeps people going."
+      },
+      {
+        "text": "Start a new, more exciting project to get the buzz back.",
+        "correct": false,
+        "why": "Chasing novelty repeats the cycle; the next project will also feel routine within a few months."
+      },
+      {
+        "text": "Double your posting target to force yourself back into it.",
+        "correct": false,
+        "why": "A bigger target on top of boredom makes the habit heavier and easier to abandon."
+      },
+      {
+        "text": "Delete the blog, since you are clearly not enjoying it any more.",
+        "correct": false,
+        "why": "Boredom after the novelty fades is normal, not proof the project is wrong. Review it honestly rather than drift away."
+      }
+    ],
+    "ideas": [
+      "19.2",
+      "19.4"
+    ],
+    "tactic": "show-up-when-bored",
+    "lesson": "Expect the novelty to fade. Keep the schedule, shrink the minimum and show up anyway."
+  },
+  {
+    "id": "c-the-process-nobody-questions",
+    "chapter": 20,
+    "domain": "business",
+    "difficulty": 2,
+    "title": "The Process Nobody Questions",
+    "scenario": "Your client onboarding process was designed five years ago and now runs smoothly on habit. Nobody looks at it any more. Meanwhile your product and customers have changed, and cancellations in the first 90 days are slowly rising. Your team is proud of how efficient onboarding is.",
+    "options": [
+      {
+        "text": "Shadow three real onboardings and note every moment of confusion or waiting.",
+        "correct": true,
+        "why": "Once a routine is automatic, small errors go unnoticed. Deliberately watching it again reveals what the habit hides."
+      },
+      {
+        "text": "Schedule a review of the process every six months from now on.",
+        "correct": true,
+        "why": "Regular reflection keeps good routines from drifting out of date and keeps improvement going after the habit is automatic."
+      },
+      {
+        "text": "Leave it alone; it has worked well for five years.",
+        "correct": false,
+        "why": "Past success does not mean the process still fits today's product and customers. Automatic can mean careless."
+      },
+      {
+        "text": "Replace the whole process with a brand-new one next week.",
+        "correct": false,
+        "why": "Changing everything at once makes it impossible to know what helped. Fix the weakest step first and measure."
+      },
+      {
+        "text": "Blame the sales team for bringing in the wrong customers.",
+        "correct": false,
+        "why": "Blaming others avoids examining your own routine. Review the process before assuming the cause lies elsewhere."
+      }
+    ],
+    "ideas": [
+      "20.1",
+      "20.3"
+    ],
+    "tactic": "audit-the-autopilot",
+    "lesson": "Good habits run on autopilot. Review them regularly so small errors do not compound."
+  }
+]

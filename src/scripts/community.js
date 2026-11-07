@@ -100,7 +100,7 @@ if (draft) {
   $('[data-ntac]').value = draft.tactic || '';
   $('[data-nideas]').value = (draft.ideas || []).join(', ');
   safe(() => localStorage.removeItem('op.community.draft'));
-  $('[data-nstatus]').textContent = 'Draft imported from the Habit Coach. Edit it before posting.';
+  $('[data-nstatus]').textContent = 'Draft imported from Ask the Coach. Edit it before posting.';
 }
 
 $('[data-new]').addEventListener('submit', (e) => {

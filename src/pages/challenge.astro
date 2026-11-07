@@ -1,0 +1,226 @@
+---
+import Base from '../layouts/Base.astro';
+import Tape from '../components/Tape.astro';
+import { u } from '../lib/url.js';
+import { RANKS } from '../lib/ranks.js';
+import { MODES } from '../lib/modes.js';
+---
+<Base title="Habit Challenge" description="Real habit dilemmas in three runs (Hop 6, Skip 12, Jump 20). Pick every move that builds a better habit, get a score and earn your rank, from Kit to Moon Rabbit.">
+  <!-- ================= INTRO ================= -->
+  <section class="wrap fc-intro" data-stage="intro">
+    <div class="fc-intro-grid">
+      <div>
+        <p class="eyebrow" data-reveal>Habit Challenge · skill test</p>
+        <h1 data-reveal>Real habit dilemmas. <span class="mark">What would you do?</span></h1>
+        <p class="lede" data-reveal>
+          Each scenario is an everyday habit problem at work or at home. Pick <strong>every</strong> move that would actually help: there may be one, two or three.
+          Your score is what you got right against what you missed, as a percentage.
+        </p>
+        <div class="modes" role="radiogroup" aria-label="Challenge length" data-reveal>
+          {MODES.map((m, i) => (
+            <label class="mode">
+              <input type="radio" name="mode" value={m.id} checked={i === 1} data-mode />
+              <span class="mode-n hand">{m.n}</span>
+              <span class="mode-body">
+                <strong>{m.name} · {m.n} habits</strong>
+                <span>{m.blurb}</span>
+                <em data-mode-best={m.id}></em>
+              </span>
+            </label>
+          ))}
+        </div>
+        <ul class="fc-rules" data-reveal>
+          <li>Scenarios cycle: you see new ones each time until the whole bank has been played</li>
+          <li>Score per scenario = correct ÷ (correct + missed)</li>
+          <li>Missed = a helpful move you left out, or an unhelpful move you picked</li>
+          <li>Your average decides your rank, from Kit to Moon Rabbit</li>
+        </ul>
+        <div class="fc-cta" data-reveal>
+          <button class="btn btn--ink" type="button" data-start>Start the challenge</button>
+          <a class="btn" href={u('/chapters/')}>Study the chapters first</a>
+        </div>
+        <p class="hint" data-best></p>
+      </div>
+      <ol class="ladder ruled" aria-label="Ranks" data-reveal="scale">
+        {[...RANKS].reverse().map((r) => (
+          <li class="ladder-step">
+            <span class="ladder-mark hand">{r.mark}</span>
+            <span class="ladder-name">{r.en}</span>
+            <span class="ladder-min">{r.min === 0 ? 'under 40%' : `${r.min}%+`}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section class="wrap fc-quiz" hidden data-stage="quiz" aria-live="polite">
+    <div class="fc-top">
+      <div class="fc-progress">
+        <span class="label" data-counter>Scenario 1 / 12</span>
+        <ol class="pips" data-pips aria-hidden="true"></ol>
+      </div>
+      <div class="fc-running"><span class="label">Score so far</span><strong data-running>–</strong></div>
+    </div>
+
+    <div class="fc-grid">
+      <article class="scenario ruled" data-scenario-card>
+        <div class="scn-head">
+          <span class="scn-num hand" data-q-num>1</span>
+          <div>
+            <p class="eyebrow" data-q-chapter>Chapter 1 · Small gains compound</p>
+            <div class="card-meta"><span class="chip chip--hl" data-q-domain>Work</span><span class="chip" data-q-diff>●○○</span></div>
+          </div>
+        </div>
+        <h2 class="scn-title" data-q-title>—</h2>
+        <p class="scn-text" data-q-text></p>
+        <p class="scn-ask hand">Pick <strong>every</strong> move that would help.</p>
+        <div class="outcome" hidden data-outcome></div>
+      </article>
+
+      <div class="moves-col">
+        <fieldset class="moves-set" data-options>
+          <legend class="label">Possible moves</legend>
+        </fieldset>
+        <div class="fc-actions">
+          <button class="btn btn--ink" type="button" data-confirm disabled>Confirm moves</button>
+          <button class="btn btn--ink" type="button" data-next hidden>Next scenario →</button>
+          <span class="hint keys-hint">Keys: 1–5 toggle · Enter confirm</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESULTS ================= -->
+  <section class="wrap fc-results" hidden data-stage="results">
+    <div class="res-hero">
+      <div class="res-badge" data-res-badge><span class="res-mark hand" data-res-mark>3</span><Tape color="amber">rank</Tape></div>
+      <div>
+        <p class="eyebrow">Challenge complete · <span data-res-mode></span></p>
+        <h1><span data-res-score>0</span>%</h1>
+        <p class="res-rank" data-res-rank>Sprinter</p>
+        <p class="lede" data-res-blurb></p>
+        <div class="fc-cta">
+          <button class="btn btn--ink" type="button" data-restart>Same length, new scenarios</button>
+          <button class="btn" type="button" data-change-mode>Choose another length</button>
+          <button class="btn" type="button" data-copy-result>Copy my result</button>
+          <a class="btn" href={u('/coach/')}>Ask the Coach about a real habit</a>
+        </div>
+      </div>
+    </div>
+    <div class="res-stats" data-res-stats></div>
+    <h2 class="res-h">Your scenarios</h2>
+    <ol class="res-list" data-res-list></ol>
+  </section>
+</Base>
+
+<script src="../scripts/challenge.js"></script>
+
+<style>
+  .fc-intro { padding: 130px 0 80px; }
+  .fc-intro-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: clamp(28px, 6vw, 80px); align-items: center; }
+  .fc-rules { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 10px; font: 400 0.95rem/1.5 var(--f-ui); color: var(--ink-2); }
+  .fc-rules li { padding-left: 28px; position: relative; }
+  .fc-rules li::before { content: ''; position: absolute; left: 2px; top: 0.25em; width: 14px; height: 8px; border-left: 2.5px solid var(--green); border-bottom: 2.5px solid var(--green); transform: rotate(-45deg); }
+  .modes { display: grid; gap: 10px; margin: 0 0 24px; }
+  .mode { position: relative; display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: center; padding: 14px 16px; border: 1.5px solid var(--line-2); border-radius: 8px; background: var(--paper-2); box-shadow: var(--shadow); cursor: pointer; transition: border-color 0.25s, transform 0.25s var(--ease); }
+  .mode:hover { border-color: var(--ink-3); transform: translateX(3px); }
+  .mode input { position: absolute; opacity: 0; pointer-events: none; }
+  .mode:has(input:checked) { border-color: var(--ink); box-shadow: 3px 3px 0 var(--hl); }
+  .mode:has(input:focus-visible) { outline: 2px dashed var(--pen); outline-offset: 3px; }
+  .mode-n { font-size: 2.6rem; line-height: 1; color: var(--ink-3); text-align: center; }
+  .mode:has(input:checked) .mode-n { color: var(--red); }
+  .mode-body { display: grid; gap: 2px; font: 400 0.88rem/1.45 var(--f-ui); color: var(--ink-2); }
+  .mode-body strong { font: 600 1.15rem var(--f-display); color: var(--ink); }
+  .mode-body em { font-style: normal; font-size: 0.8rem; color: var(--c-amber); font-weight: 600; }
+  .mode-body em:empty { display: none; }
+  .fc-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
+  .ladder { list-style: none; margin: 0; padding: 22px 18px 18px 52px; display: grid; gap: 6px; border-radius: 6px; border: 1px solid var(--line); box-shadow: var(--shadow-lift); transform: rotate(1deg); }
+  .ladder-step { display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: center; padding: 6px 4px; border-bottom: 1px dashed var(--line-2); }
+  .ladder-step:first-child .ladder-mark { color: var(--c-amber); border-color: var(--c-amber); }
+  .ladder-mark { width: 36px; height: 36px; display: grid; place-items: center; border: 2px solid var(--ink-3); border-radius: 48% 52% 45% 55% / 55% 45% 55% 45%; font-size: 1.3rem; color: var(--ink-2); transform: rotate(-6deg); }
+  .ladder-name { font: 600 1.05rem var(--f-display); }
+  .ladder-min { font: 500 0.75rem var(--f-ui); color: var(--ink-3); }
+  @media (max-width: 900px) { .fc-intro-grid { grid-template-columns: 1fr; } .ladder { transform: none; } }
+
+  .fc-quiz { padding: 110px 0 80px; }
+  .fc-top { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+  .fc-progress { flex: 1; min-width: 240px; }
+  .pips { list-style: none; display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; padding: 0; margin: 8px 0 0; }
+  .pips :global(li) { height: 8px; border-radius: 3px; background: var(--paper-4); transition: background 0.4s; }
+  .pips :global(li.now) { background: var(--ink-3); }
+  .pips :global(li.s-perfect) { background: var(--green); }
+  .pips :global(li.s-part) { background: var(--c-amber); }
+  .pips :global(li.s-zero) { background: var(--red); }
+  .fc-running { text-align: right; }
+  .fc-running strong { display: block; font: 700 2.2rem/1 var(--f-hand); color: var(--red); }
+  .fc-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+  @media (max-width: 900px) { .fc-grid { grid-template-columns: 1fr; } }
+  .scenario { position: sticky; top: 88px; padding: 26px 22px 22px 54px; border-radius: 6px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+  @media (max-width: 900px) { .scenario { position: static; } }
+  .scn-head { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+  .scn-head .eyebrow { margin-bottom: 6px; }
+  .scn-num { width: 54px; height: 54px; flex: none; display: grid; place-items: center; border: 2px solid var(--law, var(--red)); border-radius: 48% 52% 45% 55% / 55% 45% 55% 45%; color: var(--law, var(--red)); font-size: 1.7rem; transform: rotate(-6deg); }
+  .scn-title { font-size: clamp(1.7rem, 1.8vw + 1rem, 2.4rem); margin: 0 0 10px; }
+  .scn-text { font-size: clamp(1.05rem, 0.4vw + 1rem, 1.2rem); line-height: 32px; color: var(--ink); }
+  .scn-ask { font-size: 1.3rem; color: var(--pen); margin: 0; }
+  .outcome { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line-2); display: grid; gap: 12px; }
+  .outcome :global(.oc-score) { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .outcome :global(.oc-score strong) { font: 700 2.8rem/1 var(--f-hand); color: var(--red); }
+  .outcome :global(.oc-score span) { font: 500 0.85rem var(--f-ui); color: var(--ink-2); }
+  .outcome :global(.oc-lesson) { font: 600 1.35rem/1.3 var(--f-hand); color: var(--pen); margin: 0; }
+  .outcome :global(.oc-idea) { padding: 12px 14px; border-left: 3px solid var(--hl); background: var(--paper); border-radius: 0 6px 6px 0; }
+  .outcome :global(.oc-idea p) { margin: 0 0 6px; font-size: 0.97rem; color: var(--ink-2); }
+  .outcome :global(.oc-idea strong) { color: var(--ink); }
+  .outcome :global(.oc-idea a) { font: 700 0.72rem var(--f-ui); color: var(--red); text-decoration: none; }
+  .outcome :global(.oc-links) { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .moves-set { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .moves-set legend { margin-bottom: 10px; padding: 0; }
+  .moves-set :global(.move-opt) { position: relative; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; padding: 14px 16px; border: 1.5px solid var(--line-2); border-radius: 8px; background: var(--paper-2); box-shadow: var(--shadow); cursor: pointer; transition: border-color 0.25s, transform 0.25s var(--ease), box-shadow 0.25s; }
+  .moves-set :global(.move-opt:hover) { border-color: var(--ink-3); transform: translateX(3px); }
+  .moves-set :global(.move-opt input) { position: absolute; opacity: 0; pointer-events: none; }
+  .moves-set :global(.move-key) { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 6px 8px 5px 7px; border: 2px solid var(--ink-3); font: 700 0.8rem var(--f-ui); color: var(--ink-2); transform: rotate(-3deg); transition: all 0.25s; }
+  .moves-set :global(.move-text) { font-size: 1.02rem; line-height: 1.45; }
+  .moves-set :global(.move-why) { grid-column: 2; margin: 6px 0 0; font: 400 0.86rem/1.5 var(--f-ui); color: var(--ink-2); }
+  .moves-set :global(.move-tag) { grid-column: 2; font: 700 0.66rem var(--f-ui); letter-spacing: 0.12em; text-transform: uppercase; }
+  .moves-set :global(.move-opt.is-on) { border-color: var(--ink); box-shadow: 3px 3px 0 var(--hl); }
+  .moves-set :global(.move-opt.is-on .move-key) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .moves-set :global(.move-opt:focus-within) { outline: 2px dashed var(--pen); outline-offset: 3px; }
+  .moves-set.is-locked :global(.move-opt) { cursor: default; transform: none; }
+  .moves-set :global(.move-opt.r-hit) { border-color: var(--green); background: color-mix(in srgb, var(--green) 9%, var(--paper-2)); box-shadow: none; }
+  .moves-set :global(.move-opt.r-hit .move-key) { background: var(--green); border-color: var(--green); color: var(--paper-2); }
+  .moves-set :global(.move-opt.r-hit .move-tag) { color: var(--green); }
+  .moves-set :global(.move-opt.r-miss) { border-color: var(--c-amber); border-style: dashed; box-shadow: none; }
+  .moves-set :global(.move-opt.r-miss .move-tag) { color: var(--c-amber); }
+  .moves-set :global(.move-opt.r-wrong) { border-color: var(--red); background: color-mix(in srgb, var(--red) 8%, var(--paper-2)); box-shadow: none; }
+  .moves-set :global(.move-opt.r-wrong .move-key) { background: var(--red); border-color: var(--red); color: var(--paper-2); }
+  .moves-set :global(.move-opt.r-wrong .move-tag) { color: var(--red); }
+  .moves-set :global(.move-opt.r-ok) { opacity: 0.72; box-shadow: none; }
+  .moves-set :global(.move-opt.r-ok .move-tag) { color: var(--ink-3); }
+  .fc-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 16px; }
+  .keys-hint { margin-left: auto; }
+  @media (max-width: 700px) { .keys-hint { display: none; } }
+
+  .fc-results { padding: 120px 0 100px; }
+  .res-hero { display: grid; grid-template-columns: auto 1fr; gap: clamp(20px, 5vw, 56px); align-items: center; margin-bottom: 40px; }
+  .res-badge { position: relative; width: clamp(130px, 18vw, 190px); aspect-ratio: 1; display: grid; place-items: center; }
+  .res-badge :global(.tape) { position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%) rotate(-4deg); }
+  .res-mark { width: 100%; height: 100%; display: grid; place-items: center; border: 4px solid var(--red); border-radius: 48% 52% 45% 55% / 55% 45% 55% 45%; color: var(--red); font-size: clamp(4.5rem, 9vw, 7rem); transform: rotate(-8deg); }
+  .res-hero h1 { margin: 6px 0 0; font-size: clamp(4rem, 10vw, 7.5rem); line-height: 1; }
+  .res-rank { font: 600 clamp(1.4rem, 2vw + 1rem, 2.2rem) var(--f-display); color: var(--c-amber); margin: 6px 0 10px; }
+  @media (max-width: 640px) { .res-hero { grid-template-columns: 1fr; } }
+  .res-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 40px; }
+  .res-stats :global(div) { padding: 16px 18px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper-2); box-shadow: var(--shadow); }
+  .res-stats :global(strong) { display: block; font: 700 2.2rem/1.1 var(--f-hand); color: var(--red); }
+  .res-stats :global(span) { font: 600 0.72rem var(--f-ui); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+  .res-h { font-size: 1.8rem; }
+  .res-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .res-list :global(li) { display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; align-items: center; padding: 12px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper-2); }
+  .res-list :global(.rl-pct) { font: 700 1.5rem var(--f-hand); color: var(--c-amber); }
+  .res-list :global(.rl-pct.p100) { color: var(--green); }
+  .res-list :global(.rl-pct.p0) { color: var(--red); }
+  .res-list :global(.rl-title) { font: 600 1.05rem var(--f-display); }
+  .res-list :global(.rl-meta) { display: block; font: 500 0.75rem var(--f-ui); color: var(--ink-3); }
+  .res-list :global(a) { font: 700 0.72rem var(--f-ui); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+</style>

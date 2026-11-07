@@ -313,6 +313,7 @@ button.chip { cursor: pointer; }
   :root:not([data-theme='light']) .theme-toggle .i-moon { display: none; }
 }
 .nav-toggle { display: none; }
+.nav-links .mobile-only { display: none; }
 @media (max-width: 900px) {
   .nav-toggle { display: inline-grid; }
   .nav .btn--ink { display: none; }
@@ -332,6 +333,7 @@ button.chip { cursor: pointer; }
   }
   .nav-links a { display: block; padding: 14px 0; font-size: 1rem; border-bottom: 1px solid var(--line); }
   .nav-links a::after { display: none; }
+  .nav-links .mobile-only { display: block; }
   .site-header.is-open .nav-links { opacity: 1; transform: none; pointer-events: auto; }
 }
 
@@ -345,6 +347,38 @@ button.chip { cursor: pointer; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } }
 
 main { position: relative; z-index: 1; }
+
+/* Chapter bar (chapter pages, tactic library, tactic pages): first block under the fixed header */
+.chapter-bar { padding: 88px 0 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; border-bottom: 1px dashed var(--line-2); }
+.chapter-bar .eyebrow { color: var(--ink-2); font-size: 0.75rem; }
+
+/* Floating back-to-top */
+.to-top {
+  position: fixed;
+  right: clamp(14px, 3vw, 28px);
+  bottom: clamp(14px, 3vw, 28px);
+  z-index: 70;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: var(--paper-2);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--hl), var(--shadow);
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), background 0.25s;
+}
+.to-top.is-shown { opacity: 1; transform: none; }
+.to-top:hover { background: var(--hl); color: #25231f; transform: translateY(-3px); }
+.to-top svg { grid-area: 1 / 1; transition: opacity 0.25s; }
+.to-top-label { grid-area: 1 / 1; font: 700 1.05rem/1 var(--f-hand); opacity: 0; transition: opacity 0.25s; }
+.to-top:hover svg { opacity: 0; }
+.to-top:hover .to-top-label { opacity: 1; }
+@media print { .to-top { display: none; } }
 
 /* ==========================================================================
    Pen strokes, dividers

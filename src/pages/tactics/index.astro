@@ -2,9 +2,13 @@
 import { u } from '../../lib/url.js';
 import Base from '../../layouts/Base.astro';
 import TacticCard from '../../components/TacticCard.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+import Num from '../../components/Num.astro';
 import { tactics, chapters, DOMAINS, MODES } from '../../lib/content.js';
 ---
 <Base title="Tactic library" description={`${tactics.length} practical habit tactics for work, career, business, health, family and self — each with steps, a ready-to-use script and a backfire check.`}>
+  <div class="wrap chapter-bar"><span class="eyebrow">Chapter</span><ChapterNav current={0} mode="filter" withAll label="Filter tactics by chapter" /></div>
+
   <header class="lib-hero wrap">
     <p class="eyebrow" data-reveal>Tactic library</p>
     <h1 data-reveal>{tactics.length} small systems for <span class="mark">real days.</span></h1>
@@ -18,13 +22,6 @@ import { tactics, chapters, DOMAINS, MODES } from '../../lib/content.js';
         <input id="q" class="input" type="search" placeholder="email, gym, savings, team, kids…" autocomplete="off" data-q />
       </div>
       <div class="field">
-        <label for="ch">Chapter</label>
-        <select id="ch" class="input" data-ch>
-          <option value="">All chapters</option>
-          {chapters.map((c) => <option value={c.n}>{c.n}. {c.short}</option>)}
-        </select>
-      </div>
-      <div class="field">
         <label for="mode">Goal</label>
         <select id="mode" class="input" data-mode>
           <option value="">Build or break</option>
@@ -36,52 +33,114 @@ import { tactics, chapters, DOMAINS, MODES } from '../../lib/content.js';
         {Object.entries(DOMAINS).map(([k, d]) => <button class="chip" type="button" aria-pressed="false" data-domain={k}>{d.label}</button>)}
       </div>
     </div>
-    <p class="hint" aria-live="polite" data-count>{tactics.length} tactics</p>
+    <div class="ch-banner" hidden data-ch-banner>
+      {chapters.map((c) => (
+        <div hidden data-ch-info={c.n} data-color={c.part.color}>
+          <Num n={c.n} color={c.part.color} />
+          <div>
+            <span class="eyebrow">Chapter {c.n} · {c.part.label}</span>
+            <h2>{c.short}</h2>
+            <p>{c.essence} <a href={u(`/chapters/${c.n}/`)}>Read the chapter →</a></p>
+          </div>
+        </div>
+      ))}
+    </div>
+    <p class="hint" aria-live="polite" data-tcount>{tactics.length} tactics</p>
     <div class="grid" data-grid>
       {tactics.map((t) => <TacticCard t={t} />)}
     </div>
-    <p class="empty" hidden data-empty>No tactic matches yet. Try the <a href={u('/coach/')}>Habit Coach</a> and describe your situation in your own words.</p>
+    <p class="empty" hidden data-empty>No tactic matches yet. <a href={u('/coach/')}>Ask the Coach</a> and describe your situation in your own words.</p>
   </section>
 </Base>
 
 <script>
   const cards = [...document.querySelectorAll('[data-grid] > .tactic-card')];
   const q = document.querySelector('[data-q]');
-  const ch = document.querySelector('[data-ch]');
   const mode = document.querySelector('[data-mode]');
-  const count = document.querySelector('[data-count]');
+  const count = document.querySelector('[data-tcount]');
   const empty = document.querySelector('[data-empty]');
-  let domain = '';
+  const nav = document.querySelector('[data-cnav="filter"]');
+  const select = nav.querySelector('[data-cn-select]');
+  const prevBtn = nav.querySelector('[data-cn-step="prev"]');
+  const nextBtn = nav.querySelector('[data-cn-step="next"]');
+  const banner = document.querySelector('[data-ch-banner]');
+  const MAX = select.querySelectorAll('option[value]:not([value=""])').length;
   const params = new URLSearchParams(location.search);
+  let domain = params.get('domain') || '';
+  const chParam = Number(params.get('ch'));
+  let chapter = Number.isInteger(chParam) && chParam >= 1 && chParam <= MAX ? String(chParam) : '';
   if (params.get('q')) q.value = params.get('q');
-  if (params.get('domain')) domain = params.get('domain');
   if (params.get('mode')) mode.value = params.get('mode');
+
+  const syncPager = () => {
+    const n = Number(chapter) || 0;
+    select.value = chapter;
+    const setStep = (el, target) => {
+      el.classList.toggle('is-off', !target);
+      el.dataset.n = target ? String(target) : '';
+      target ? el.removeAttribute('aria-disabled') : el.setAttribute('aria-disabled', 'true');
+      el.tabIndex = target ? 0 : -1;
+      if (target) el.setAttribute('href', `?ch=${target}`); else el.removeAttribute('href');
+      if (target) el.setAttribute('aria-label', `${el.dataset.cnStep === 'prev' ? 'Previous' : 'Next'} chapter: ${select.querySelector(`option[value="${target}"]`).textContent.trim()}`); else el.removeAttribute('aria-label');
+    };
+    setStep(prevBtn, n > 1 ? n - 1 : null);
+    setStep(nextBtn, n ? (n < MAX ? n + 1 : null) : 1);
+    banner.hidden = !chapter;
+    banner.querySelectorAll('[data-ch-info]').forEach((d) => (d.hidden = d.dataset.chInfo !== chapter));
+  };
 
   const run = () => {
     const terms = q.value.toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
     for (const c of cards) {
-      const ok = (!domain || c.dataset.domain === domain) && (!ch.value || c.dataset.chapter === ch.value) && (!mode.value || c.dataset.mode === mode.value) && terms.every((t) => c.dataset.text.includes(t));
+      const ok = (!domain || c.dataset.domain === domain) && (!chapter || c.dataset.chapter === chapter) && (!mode.value || c.dataset.mode === mode.value) && terms.every((t) => c.dataset.text.includes(t));
       c.hidden = !ok;
       if (ok) { shown++; c.style.opacity = 1; c.style.transform = 'none'; }
     }
-    count.textContent = `${shown} tactic${shown === 1 ? '' : 's'}`;
+    count.textContent = `${shown} tactic${shown === 1 ? '' : 's'}${chapter ? ` in chapter ${chapter}` : ''}`;
     empty.hidden = shown > 0;
     document.querySelectorAll('button[data-domain]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.domain === domain)));
+    syncPager();
     window.dispatchEvent(new Event('resize'));
   };
-  q.addEventListener('input', run);
-  ch.addEventListener('change', run);
-  mode.addEventListener('change', run);
-  document.querySelectorAll('button[data-domain]').forEach((b) => b.addEventListener('click', () => { domain = b.dataset.domain; run(); }));
-  if (q.value || domain || mode.value) run();
+
+  const setUrl = () => {
+    const p = new URLSearchParams();
+    if (chapter) p.set('ch', chapter);
+    if (domain) p.set('domain', domain);
+    if (mode.value) p.set('mode', mode.value);
+    if (q.value.trim()) p.set('q', q.value.trim());
+    history.replaceState(null, '', `${location.pathname}${p.toString() ? `?${p}` : ''}`);
+  };
+
+  // Dropdown and arrows filter instantly (arrow links still work without JS).
+  select.addEventListener('change', () => { chapter = select.value; run(); setUrl(); });
+  nav.querySelector('form')?.addEventListener('submit', (e) => e.preventDefault());
+  [prevBtn, nextBtn].forEach((btn) =>
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (btn.classList.contains('is-off')) return;
+      chapter = btn.dataset.n;
+      run();
+      setUrl();
+    }),
+  );
+  q.addEventListener('input', () => { run(); setUrl(); });
+  mode.addEventListener('change', () => { run(); setUrl(); });
+  document.querySelectorAll('button[data-domain]').forEach((b) => b.addEventListener('click', () => { domain = b.dataset.domain; run(); setUrl(); }));
+  run();
 </script>
 
 <style>
-  .lib-hero { padding: 140px 0 32px; }
+  .lib-hero { padding: 40px 0 32px; }
   .filters { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; margin-bottom: 14px; position: relative; z-index: 2; }
   .domains { display: flex; flex-wrap: wrap; gap: 6px; flex-basis: 100%; }
   .lib { padding-bottom: 100px; }
   .lib .grid { margin-top: 18px; }
+  .ch-banner { margin: 22px 0 6px; }
+  .ch-banner [data-ch-info]:not([hidden]) { display: flex; gap: 18px; align-items: center; padding: 18px 22px; border-left: 4px solid var(--law); background: var(--paper-2); border-radius: 0 8px 8px 0; box-shadow: var(--shadow); }
+  .ch-banner h2 { font-size: clamp(1.6rem, 1.6vw + 1rem, 2.2rem); margin: 4px 0 6px; color: var(--law); }
+  .ch-banner p { margin: 0; color: var(--ink-2); }
+  .ch-banner a { color: var(--red); text-decoration: none; font: 700 0.8rem var(--f-ui); margin-left: 6px; }
   .empty { padding: 40px 0; color: var(--ink-2); }
 </style>

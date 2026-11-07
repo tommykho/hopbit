@@ -6,7 +6,8 @@ A static website that turns 20 chapters of habit ideas into practical habit tact
 
 - **Chapters, mapped**: the Fundamentals, the Four Laws (and their inversions) and Advanced Tactics. Every chapter has an original title and 5 numbered **key ideas** (100 in total), written in plain words for this project, each with a one-line "Try" exercise.
 - **Tactic library**: 60 tactics (3 per chapter), filterable by chapter, domain and build/break. Each has a scene, idea citations, a step-by-step system with tickable steps, a ready-to-use script, a backfire check and signs that it is working.
-- **Habit Coach (AI)**: describe a habit to start or stop and get your habit loop, a four-law system, a script and a backfire check. Every `[chapter.idea]` citation is checked against the dataset: exact phrases, paraphrases and invented IDs are labelled.
+- **Habit Challenge (skill test)**: Hop (6), Skip (12) or Jump (20) everyday habit dilemmas from a 30-scenario bank. Pick every helpful move (one to three of five); score = correct ÷ (correct + missed); your average earns a rank from Kit to Moon Rabbit. Each reveal explains every move and links the idea and tactic.
+- **Ask the Coach (AI)**: describe a habit to start or stop and get your habit loop, a four-law system, a script and a backfire check. Each provider/model has an editorial coach rank (Puter.js default = Kit, Claude Opus = Moon Rabbit), and you can rate every plan. Every `[chapter.idea]` citation is checked against the dataset: exact phrases, paraphrases and invented IDs are labelled.
 - **30-second podcast**: the plan becomes a spoken script, voiced on your device (Kokoro-82M) or with your own TTS key, with a soft chime intro, and downloaded as an MP3.
 - **Community habit journals** (preview): post the habit you built or broke, rate others' entries, flag unhealthy ones. Phase 2 adds accounts and shared storage.
 - **Brand**: the Hopbit V3 die-cut rabbit (`public/hopbit-diecut.svg`, generated from the Hopbit brand kit geometry) in the header and footer; favicon and touch icon from the Hopbit avatar.
@@ -51,15 +52,16 @@ Node 20+ is required.
 | Meta Muse Spark | paid key (public preview) | relay |
 | Custom OpenAI-compatible, e.g. Ollama on your NAS | free | browser |
 
-Podcast voice: Kokoro-82M on the device (default, free) · Gemini TTS · OpenAI TTS · ElevenLabs (visitor's key).
+Default coach: **Puter.js** (no key). Podcast voice: Kokoro-82M Heart on the device (default, free, GPU with automatic CPU fallback) · Gemini TTS · OpenAI TTS · ElevenLabs (visitor's key).
 
 ## Project layout
 
 ```
-data/            book.json (parts + original chapter titles), chapters/ (ideas), tactics/, community-demo.json
+data/            book.json (parts + original chapter titles), chapters/ (ideas), tactics/, challenge/ (quiz bank), community-demo.json
 scripts/         validate-content.mjs (schema, idea-ID and no-long-quote checks)
-src/pages/       index, chapters/, chapters/[n], tactics/, tactics/[slug], coach, community, about, corpus.json
-src/scripts/     motion.js (GSAP + Lenis, theme) · field/* (providers, retrieval, prompt, tts, worker) · community.js
+src/pages/       index, chapters/, chapters/[n], tactics/, tactics/[slug], challenge, coach, community, about, corpus.json, challenge.json
+src/scripts/     motion.js (GSAP + Lenis, theme, back-to-top) · challenge.js · field/* (providers, retrieval, prompt, tts, worker) · community.js
+src/lib/         content.js · ranks.js (Kit → Moon Rabbit) · modes.js (Hop/Skip/Jump) · url.js
 server/          relay-core.js (portable) · node-relay.mjs (NAS / self-host)
 functions/api/   relay.js (Cloudflare Pages Function)
 api/             relay.js (Vercel Function)

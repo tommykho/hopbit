@@ -27,7 +27,14 @@ GitHub Pages has no functions, so that build sets `PUBLIC_RELAY_URL` to the Verc
 
 No book text is stored. `scripts/validate-content.mjs` rejects long quoted passages.
 
-## Habit Coach pipeline
+## Habit Challenge
+
+`/challenge.json` is built from `data/challenge/set*.json` with idea summaries and tactic titles resolved at build
+time. `src/scripts/challenge.js` picks a run (Hop 6 · Skip 12 · Jump 20), cycling unseen scenarios first and spreading
+them across chapters; scores, best per run and the seen-cycle are kept in browser storage (`op.challenge.v1`). Ranks
+come from `src/lib/ranks.js`, which also gives each AI provider/model an editorial coach rank on Ask the Coach.
+
+## Ask the Coach pipeline
 
 1. **Retrieve (local):** MiniSearch over 100 ideas and 60 tactics → top tactics, their ideas, keyword-matched ideas, plus one key idea per chapter (about 25–30 ideas).
 2. **Prompt:** the system prompt sets the stance (tiny steps, no shaming), health and ethics limits, a strict six-section format (Read the Loop · Ideas That Apply · Your System · Script to Use · Backfire Check · Podcast Script), *cite only listed IDs*, and *never quote the book*. The habit text is wrapped as data, not instructions.
