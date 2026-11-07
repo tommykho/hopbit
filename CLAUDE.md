@@ -25,8 +25,8 @@ Sub-path build (as GitHub Pages): `SITE_URL=https://tommykho.github.io BASE_PATH
 
 - GitHub `tommykho/hopbit` (renamed from `atomichabits`). The local clone may still be `/home/user/atomichabits`, and a
   container restart can revert `origin` to the old URL: run `git remote -v` and re-set it before every push.
-- Working branch `claude/pensive-cray-kiis8w` (ahead of `main`). **`main` lags far behind** (fa931bf); Pages deploys
-  from both, so a push to either replaces the live site. Fast-forward `main` only with the user's go-ahead.
+- Working branch `claude/pensive-cray-kiis8w`; `main` was fast-forwarded to it on 2026-11-07. Pages deploys from both,
+  so a push to either replaces the live site. Fast-forward `main` only with the user's go-ahead.
 
 ## Copyright and trademark — non-negotiable
 
@@ -134,6 +134,8 @@ arrows.
 ## Deploy
 
 - GitHub Pages: Settings → Pages → Source = **GitHub Actions** ("Deploy from a branch" runs Jekyll on raw Astro → 404).
+  suntze and hopbit switched 2026-11-07; fiverings still showed branch-mode Jekyll runs then. A failed "pages build and
+  deployment" run after a push means the source is still (or again) a branch; the Actions deploy still goes live.
 - Prefer `actions/configure-pages` outputs for `BASE_PATH`/`SITE_URL`: a hardcoded `/atomichabits` broke every link when
   the repo was renamed. Every internal link goes through `u()`/`BASE`; `robots.txt` is generated, not static.
 - Vercel relay = direct upload of `api/relay.js` + `server/relay-core.js` + `package.json` (`"type": "module"`) +
